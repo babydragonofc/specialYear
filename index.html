@@ -3,9 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segredo</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: rgb(23, 21, 46); color: white;">
-    <h1>Muito cedo...</h1>
+
+<body>
+    <div id="start">
+        <h1 style="color: white;">Bem vindo(a)</h1>
+        <input type="text" name="" id="password">
+        <button id="En">Entrar</button>
+    </div>
+    <div id="mainPage">
+        <div id="miniPaperLight"></div>
+        <div id="energyOverlay">
+            <p class="energyText">As sombras na minha vida somem com sua luz.</p>
+
+            <button class="energyBtn">< Voltar</button>
+        </div>
+
+        <div id="overlay">
+            <span id="magicSecret">Novo Segredo</span>
+            <div id="secretMsg">
+                <h2 id="secretMsgName" class="big-title"></h2>
+                <p id="secretMsgText" class="text"></p>
+            </div>
+            <p class="text" id="backTxt">Clique para sair</p>
+        </div>
+        <div class="welcome-screen">
+            <main class="image-gallery">
+                <img src="big.svg" alt="Imagem principal grande" class="large-image">
+                <h1 class="big-title">A SPECIAL <br>YEAR</h1>
+                <div class="text-container">
+                    <p class="text">Allícia   +   Arthur</p>
+                    <p class="text">ʌɐ</p>
+                </div>
+                <button id="enter-btn" class="btn" disabled style="z-index: 10;">Carregando...</button>
+        
+                <div class="small-images-container">
+                    <img src="s2.svg" alt="Segunda imagem pequena" class="small-image">
+                    <img src="s1.svg" alt="Primeira imagem pequena" class="small-image">
+                </div>
+            </main>
+        </div>
+
+        <div class="main-content">
+            <h1 class="big-title">Olá My Love</h1>
+            <p class="text">Quantos segredos será que você consegue encontrar?</p>
+            <p class="text">[ <span id="secretsNumber">0</span>/ <span id="totalSecrets">0</span> ]</p>
+            
+            <div class="btns">
+                <button id="gallery-btn" class="btn">Galeria</button>
+                <button id="messages-btn" class="btn">Mensagens</button>
+                <button id="extras-btn" class="btn">Extras</button>
+                
+            </div>
+            <div class="footer">
+                <p>ʌɐ</p>
+            </div>
+
+            <div id="galeria">
+                <img src="topArrow.svg" alt="" class="arrow">
+                <main>
+                    <h1 class="big-title">GALERIA</h1>
+
+                    <div class="photos-container">
+                        <div class="photo" id="photo-0">
+                            <div id="photo-0-overlay"></div>
+                        </div>
+
+                        <div class="photo" id="photo-1">
+                            <div id="photo-1-overlay"></div>
+                        </div>
+
+                        <div class="photo" id="photo-2">
+                            <div id="photo-2-overlay"></div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="photoNameDisplay" class="text"></h3>
+
+                    <button class="p-btn" id="write-btn" style="display: none;">Escrever</button>
+                    <button class="p-btn p" id="erase-btn" style="display: none;">Apagar</button>
+
+                    <button class="cp-btn" id="gal"></button>
+                </main>
+            </div>
+
+            <!-- Nova seção de Mensagens -->
+            <div id="mensagens">
+                <img src="topArrow.svg" alt="Fechar" class="arrow">
+                <main>
+                    <h1 class="big-title">MENSAGENS</h1>
+                    <p class="text" style="padding: 0 20px; text-align: center;">Aqui estarão as mensagens especiais para você, meu amor. Cada palavra escrita com todo meu coração.</p>
+                    <div id="cards-container">
+                    </div>
+                    <button class="cp-btn" id="msg"></button>
+                    
+                </main>
+            </div>
+
+            <!-- Nova seção de Extras -->
+            <div id="extras">
+                <img src="topArrow.svg" alt="Fechar" class="arrow">
+                <main>
+                    <h1 class="big-title">EXTRAS</h1>
+                    <p class="text" style="padding: 0 20px; text-align: center;">Aqui você encontrará coisinhas a mais, como playlists, links especiais e outras surpresas que preparei.</p>
+                    <!-- Conteúdo dos extras virá aqui -->
+                    <section id="music-div">
+                        <audio id="audio" src=""></audio>
+                        <div id="music-control">
+                            <div id="music-buttons">
+                                <button class="r-btn"><img src="mscA.svg" alt="" style="transform: rotate(180deg);"></button>
+                                <button class="r-btn" id="pause-btn"><img src="pause.svg" alt="" style="transform: rotate(180deg);"></button>
+                                <button class="r-btn"><img src="mscA.svg" alt=""></button>
+                            </div>
+                            <div id="music-thumb">
+                                <div id="music-thumb-fill">
+                                    <div id="music-thumb-circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="musics">
+                            <div class="music">
+                                <img src="https://cdn-images.dzcdn.net/images/cover/33d70251f40848052b216707eff6830f/0x1900-000000-80-0-0.jpg" alt="">
+                                <div class="music-info">
+                                    <h3 class="music-title">Lorem</h3>
+                                    <p class="music-artist" class="text">Lorem, ipsum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="cardBox">
+                        <p class="c-text">Uma caixinha para o nosso futuro</p>
+                        <button class="c-btn">Pegar um bilhete</button>
+                    </div>
+                    
+                    <div class="grafitDiv">
+                        <button id="penG"></button>
+                    </div>
+
+                    <div id="light">
+                        <div class="lightDiv">
+                            <img src="luz1.png" alt="Luz" class="lI"/>
+                        </div>
+                        <div class="lightDiv sec">
+                            <img src="luz1.png" alt="Luz" class="lI"/>
+                        </div>
+                    </div>
+                    <div id="shadow">
+                        <p class="text" id="sdwTxt" >Existem segredos nas sombras</p>
+                        <div class="shadow-content">
+
+                            <img src="" alt="" class="shadow-img">
+                            <img src="" alt="" class="shadow-img">
+                            <img src="" alt="" class="shadow-img">
+
+                            <button class="gamesBtn">Entrar</button>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+
+        <!-- Visualização da Carta -->
+        <div id="letter-view">
+            <div class="letter-content" id="letter-content">
+                <button class="close-letter-btn">&times;</button>
+                <h2 id="letter-title"></h2>
+                <p id="letter-text"></p>
+                <span id="letter-zoom-text" class="text">Clique para expandir</span>
+                <div class="scroll-arrow">
+                    <img src="bottomArrow.svg" alt="Rolar para baixo">
+                </div>
+            </div>
+        </div>
+
+        <div id="photo-notification">
+            <img id="photo-notification-img" src="https://i.redd.it/w6a6775zvp661.gif" alt="">
+            <p id="photo-notification-text"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,1301 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
+* {
+    box-sizing: border-box;
+    /* Impede a seleção de texto em toda a página */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Padrão */
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* O fundo agora é controlado individualmente por cada seção */
+    background-image: url(c542315a34cb00510499d93d7ff473cd\ \(2\).jpg);
+    background-size: cover;
+    background-position: center;
+    transition: 2s ;
+    background-position-y: 0;
+}
+
+#start {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #130329;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5000;
+    transition: 1s opacity;
+}
+
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 16px;
+    z-index: 10;
+    transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+    position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+    overflow: hidden; /* Esconde o excesso do background ao dar zoom */
+}
+
+.welcome-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Coloca o fundo atrás do conteúdo */
+    animation: zoom-in 15s forwards; /* Aplica a animação de zoom */
+}
+
+.welcome-screen.hidden {
+    transform: translateY(-100%);
+}
+
+/* Container principal da galeria */
+.image-gallery {
+    display: flex;
+    flex-direction: column; /* Empilha os itens verticalmente */
+    /* O gap não é mais necessário pois o container pequeno será posicionado de forma fixa */
+    width: 100%;
+    max-width: 480px; /* Largura máxima comum para telas de celular */
+}
+
+.large-image {
+    width: 100%; /* Faz a imagem ocupar toda a largura do container */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block;
+    border-radius: 4px; /* Suaviza as bordas da imagem principal */
+}
+
+.small-images-container {
+    position: fixed; /* Fixa o container na tela, independente da rolagem */
+    bottom: 0; /* Alinha na base da tela */
+    left: 0; /* Garante que ocupe a largura toda */
+    display: flex;
+    justify-content: space-between; /* Empurra as imagens para os cantos */
+    width: 100%;
+    padding: 20px; /* Espaçamento para afastar as imagens das bordas da tela */
+}
+
+.small-image {
+    /* Define uma largura menor para as imagens */
+    width: 80px; /* Largura fixa */
+    height: 80px; /* Altura fixa */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+}
+
+.big-title {
+
+    color: aliceblue;
+    font-size: 581%;
+    font-family: "Instrument Serif", serif;
+    margin: 0;
+}
+
+.text {
+
+    font-family: "Funnel Display", sans-serif;
+    color: aliceblue;
+    margin: 0;
+    
+}
+
+.text-container {
+    
+    display: flex;
+    justify-content: space-between;
+    margin: 0 6px;
+    
+}
+
+.btn {
+    /* From https://css.glass */
+    background: rgba(242, 242, 242, 0.31);
+    border-radius: 16px;
+    box-shadow: inset 0 4px 30px rgba(255, 245, 245, 0.4);
+    -webkit-backdrop-filter: blur(7.5px); /* Adicionado para compatibilidade com Safari */
+    backdrop-filter: blur(7.5px); /* Efeito de vidro fosco */
+    border: 1px solid rgba(242, 242, 242, 0.8);
+    margin-top: 22px;
+    width: 100%; /* Faz o botão ocupar a largura total */
+    padding: 20px 0; /* Espaçamento interno, mais flexível que 'height' */
+    
+    /* Estilos para o texto e interatividade */
+    color: aliceblue;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background 0.3s ease; /* Transição suave para o hover */ 
+    font-family: "Funnel Display", sans-serif;
+    
+}
+
+.btn:hover {
+    background: rgba(242, 242, 242, 0.5); /* Fundo um pouco mais opaco ao passar o mouse */
+}
+
+.btn:disabled {
+    cursor: wait;
+    background: rgba(242, 242, 242, 0.2);
+    box-shadow: none;
+}
+
+.r-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(242 242 242 / 0%);
+    border-radius: 16px;
+    box-shadow: inset 0 -3px 6px 5px rgb(255 245 245);
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+    border: 1px solid rgba(242, 242, 242, 0.8);
+    width: 50px;
+    height: 50px;
+    padding: 20px 0;
+    color: #526778;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: "Funnel Display", sans-serif;
+}
+
+
+.r-btn img{
+    filter: invert(39%) sepia(11%) saturate(932%) hue-rotate(169deg) brightness(95%) contrast(88%);
+}
+
+
+.r-btn:hover {
+    background: rgba(242, 242, 242, 0.5); /* Fundo um pouco mais opaco ao passar o mouse */
+}
+
+.r-btn:disabled {
+    cursor: wait;
+    background: rgba(242, 242, 242, 0.2);
+    box-shadow: none;
+}
+
+.btn:active, .r-btn:active {
+    transform: scale(0.98);  
+}
+
+.main-content {
+    /* Padding vertical reduzido para ajudar o conteúdo a caber na tela */
+    padding: 20px;
+    text-align: center;
+    position: fixed; /* Fixa o conteúdo na tela */
+    top: 100vh;      /* Posiciona-o logo abaixo da área visível */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden; /* Alterado para 'hidden' para garantir que não haja rolagem */
+    transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1); /* Mesma transição da welcome screen */
+    z-index: 5; /* Garante que fique abaixo da welcome screen */
+}
+
+.main-content.visible {
+    transform: translateY(-100%); /* Move o conteúdo para cima, para a área visível */
+}
+
+
+.main-content .big-title {
+    
+    font-size: 300%;
+    margin-bottom: 20px;
+    margin-top: 55px;
+    
+    
+}
+
+.main-content .btns {
+    margin-top: 30px;
+}
+
+/* Define que os botões comecem invisíveis por padrão */
+.main-content .btns > .btn {
+    opacity: 0;
+}
+
+#gallery-btn.visible {
+    animation: show-btn 0.5s ease-in-out forwards 0.2s;
+}
+
+#messages-btn.visible {
+    animation: show-btn 0.5s ease-in-out forwards 0.3s;
+}
+
+#extras-btn.visible {
+    animation: show-btn 0.5s ease-in-out forwards 0.4s;
+}
+
+@keyframes show-btn {
+    0% {opacity: 0; transform: scale(0.8);}
+    100% {opacity: 1; transform: scale(1);}
+}
+
+.move {
+    background-position-y: bottom;
+}
+
+.footer {
+    height: 81px;
+    background-color: #7d6c6f;
+    position: absolute; /* Posição relativa ao pai (.main-content) */
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    /* Adicionado para centralizar o texto vertical e horizontalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(c542315a34cb00510499d93d7ff473cd\ \(1\).jpg);
+
+    display: none;
+}
+
+.footer p {
+    font-family: "Funnel Display", sans-serif;
+    color: aliceblue;
+    margin: 0;
+}
+
+/* Estilos compartilhados para as seções de página (Galeria, Mensagens) */
+#galeria, #mensagens, #extras {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* Adicionado para criar um efeito de modal com fundo escuro */
+    /* From https://css.glass */
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 20; /* Garante que a galeria fique sobre o resto do conteúdo */
+    
+    /* Inicialmente escondido */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+#galeria.visible,
+#mensagens.visible,
+#extras.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.arrow{
+    position: relative; /* Garante que a seta fique sobre o painel que sobe */
+    margin-top: 5px;
+    pointer-events: none; /* Faz com que o elemento não seja alvo de eventos de mouse, permitindo o clique "através" dele. */
+}
+
+
+#galeria main, #mensagens main, #extras main {
+    position: absolute;
+    background-color: #fdfcfd; /* Um branco um pouco mais suave */
+    width: 100%;
+    height: 95%; /* Altura do painel da galeria */
+    bottom: 0;
+    border-radius: 25px 25px 0 0; /* Cantos arredondados apenas no topo */
+    transform: translateY(100%); /* Começa fora da tela, abaixo */
+    transition: transform 0.4s ease-in-out; /* Animação de subida */
+    overflow-x: hidden; /* Impede a rolagem horizontal */
+    overflow-y: auto;   /* Permite a rolagem vertical do conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+
+#galeria main::-webkit-scrollbar {
+    background-color: #000000;
+    color: #000000;
+}
+
+#galeria main::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+#galeria main .big-title,
+#mensagens main .big-title,
+#extras main .big-title {
+    color: rgb(110 108 117);
+}
+
+#galeria main #photoNameDisplay,
+#extras main .text,
+#mensagens main .text {
+    color: rgb(125, 123, 131);
+    font-weight: 300;
+    /* Adiciona uma transição suave para o efeito de fade */
+    transition: opacity 0.2s ease-in-out;
+}
+
+@keyframes zoom-in {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.15); /* Aumenta o tamanho do fundo em 15% */
+    }
+}
+
+#galeria.visible main,
+#mensagens.visible main,
+#extras.visible main {
+    transform: translateY(0); /* Move o painel para a posição final (visível) */
+}
+
+#galeria .photos-container {
+    display: flex;
+    /* Alterado para permitir posicionamento absoluto dos filhos */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 64px;
+    height: 220px; /* Altura para conter as fotos e a animação */
+}
+
+
+.photo {
+    height: 200px;
+    width: 170px;
+    background-color: rgb(255, 255, 255);
+    border: #7d6c6f solid 1px;
+    /* Posicionamento absoluto para permitir a sobreposição e animação de translação */
+    position: absolute;
+    cursor: pointer; /* Indica que as fotos laterais são clicáveis */
+    /* A transição no transform cria a animação de movimento */
+    transition: transform 0.5s ease-in-out;
+    box-shadow: #00000031 1px 1px 10px 5px ;
+}
+
+.photo div {
+    /* Ajuste para posicionar a imagem dentro do 'polaroid' */
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+
+}
+
+/* Estilo específico para o overlay da foto para garantir que a imagem apareça corretamente */
+#photo-1-overlay {
+    background-size: cover; /* Faz a imagem cobrir todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+}
+/* --- Efeito de Partículas de Estrela --- */
+
+.particle {
+    position: absolute;
+    background-color: #000000; /* Cor branca para as estrelas */
+    /* Garante que as partículas não interfiram com cliques na foto */
+    pointer-events: none; 
+    /* Aplica a animação, 'forwards' mantém o estado final (invisível) */
+    animation: fadeOutAndFloat 1.5s ease-out forwards;
+    /* Usa o SVG como uma máscara para dar a forma de estrela e aplicar a cor de fundo */
+    mask-image: url(star.svg);
+    -webkit-mask-image: url(star.svg); /* Compatibilidade com browsers WebKit */
+    mask-size: contain;
+    /* A borda agora é criada por um pseudo-elemento ::before posicionado atrás */
+    transform: scale(2.0);
+}
+
+.particle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255); /* Cor da borda */
+    mask-image: url(star.svg);
+    -webkit-mask-image: url(star.svg);
+    mask-size: contain;
+    transform: scale(0.9); /* Aumenta o fundo para criar a borda (25% maior) */
+    
+}
+
+@keyframes fadeOutAndFloat {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(2); /* Aumenta o tamanho inicial da partícula */
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-30px) scale(1); /* Flutua mais para cima e diminui para um tamanho final maior */
+    }
+}
+
+/* --- Animação da Mensagem Secreta --- */
+
+#overlay {
+    width: 100%;
+    height: 100dvh;
+    position: fixed; /* Fixo para cobrir toda a tela */
+    top: 0;
+    left: 0;
+    background-color: transparent; /* Começa transparente */
+    z-index: 50;
+    display: flex; /* Usa flexbox para centralizar a caixa */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0; /* Controla a visibilidade com opacidade para animar */
+}
+
+#overlay #secretMsg {
+    width: 90%;
+    max-width: 400px; /* Limita a largura em telas grandes */
+    padding: 24px;
+    background: #1c1c1c; /* Fundo escuro sólido para melhor leitura */
+    border-radius: 16px;
+    text-align: center;
+    opacity: 0; /* Começa invisível para a animação de entrada */
+}
+
+/* Esconde os textos inicialmente */
+#overlay #secretMsg .big-title,
+#overlay #secretMsg .text,
+#overlay #backTxt {
+    opacity: 0;
+}
+
+/* --- Animações de Entrada --- */
+
+#overlay.visible {
+    visibility: visible;
+    opacity: 1;
+    /* 2. Anima o fundo do overlay (depois da caixa aparecer) */
+    animation: fadeInBg 0.4s ease-out 0.2s forwards;
+}
+
+#overlay.visible #secretMsg {
+    /* 1. Anima a caixa da mensagem */
+    animation: magicalPopIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s forwards;
+}
+
+#overlay.visible #secretMsg .big-title {
+    /* 3. Anima o título (depois da caixa e do fundo) */
+    animation: magicalFadeInUp 0.5s ease-out 0.6s forwards;
+}
+
+#overlay.visible #secretMsg .text {
+    /* A animação agora é controlada por JS, letra por letra.
+       A opacidade inicial do container é 0, mas o JS cuidará de animar os filhos. */
+    opacity: 1; /* Garante que o container esteja visível para os spans filhos aparecerem */
+}
+
+/* Estilo para cada letra (span) dentro da descrição */
+#secretMsgText span {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+#secretMsgText span.visible {
+    opacity: 1;
+}
+
+/* 5. Anima o texto de saída (por último e com um fade simples) */
+#overlay.visible #backTxt {
+    margin-top: 50px;
+    color: rgba(240, 248, 255, 0.605);
+    animation: fadeInText 0.6s ease-out 5s forwards;
+}
+
+/* --- Animações de Saída --- */
+
+#overlay.hiding {
+    animation: fadeOutBg 0.4s ease-in forwards;
+}
+
+#overlay.hiding #secretMsg {
+    animation: magicalPopOut 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+#overlay.hiding #secretMsg .big-title,
+#overlay.hiding #secretMsg .text,
+#overlay.hiding #backTxt {
+    animation: fadeOutText 0.2s ease-in forwards;
+}
+
+#magicSecret {
+    display: none;
+    color: white;
+    /* Adicionado para preparar a animação de entrada, começando invisível */
+    opacity: 0;
+}
+
+#magicSecret.visible {
+    display: block;
+    /* Aplica a nova animação de entrada */
+    animation: magicalFadeInDown 0.6s ease-out 0.4s forwards;
+}
+
+/* Estilos para a animação de onda em cada letra */
+#magicSecret span {
+    position: relative;
+    display: inline-block; /* Necessário para que a transformação funcione */
+    animation: wave 1.6s infinite ease-in-out; /* Deixei um pouco mais rápido */
+    text-shadow: 0 0 16px rgba(255, 255, 255, 0.9); /* Aumentei o brilho */
+}
+
+/* --- Keyframes --- */
+
+@keyframes magicalPopIn {
+    from { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+    to { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes magicalPopOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.7) rotate(5deg); }
+}
+
+@keyframes fadeInBg {
+    from { background-color: transparent; }
+    to { background-color: #000000b8; } /* Um pouco mais escuro */
+}
+@keyframes fadeOutBg {
+    from { background-color: #000000b8; }
+    to { background-color: transparent; }
+}
+
+@keyframes magicalFadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Nova animação para o "Novo Segredo" deslizar de cima */
+@keyframes magicalFadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInText {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeOutText {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px); /* Aumentei a altura da onda */
+    }
+}
+
+#cards-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+#mensagens::-webkit-scrollbar {
+    display: none; /* Chrome, Safari e Opera */
+}
+
+.paper {
+    width: 50px;
+    height: 100px;
+    width: 165px;
+    height: 228px;
+    background-size: cover;
+    border: none;
+    box-shadow: 5px 7px 12px 6px rgba(0, 0, 0, 0.41);
+    transform: rotate(10deg);
+    background-position: center;
+    background-color: transparent;
+}
+
+/* --- Visualização da Carta --- */
+#letter-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 60; /* Acima do overlay de segredo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    /* Escondido por padrão */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+#letter-view.visible {
+    opacity: 1;
+    visibility: visible;
+}
+#letter-content {
+    position: relative;
+    background-size: contain;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 165 / 228; /* Mesma proporção da classe .paper (largura/altura) */
+    height: auto; /* A altura se ajustará para manter a proporção */
+    max-height: 85vh; /* Limite máximo de altura para não ocupar a tela toda */
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    overflow-x: hidden; /* Adicionado para corrigir a rolagem horizontal */
+    color: #4a3e3e;
+
+    /* Animação de entrada e estado base */
+    --initial-rotate: 0deg; /* Variável para guardar a rotação inicial */
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+/* Classes para o controle de zoom */
+#letter-content.zoomable {
+    cursor: zoom-in;
+}
+
+/* Estilo para o texto de zoom, agora dentro de #letter-content */
+#letter-zoom-text {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #6b5b4b; /* Cor que combina com o título */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Mostra o texto quando a carta é 'zoomable' */
+#letter-content.zoomable #letter-zoom-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+#letter-content.zoomed {
+    cursor: grab;
+}
+
+#letter-content.panning {
+    cursor: grabbing;
+    transition: none; /* Desabilita a transição durante o arraste */
+}
+
+.scroll-arrow {
+    position: sticky; /* Fica fixo na parte de baixo durante a rolagem */
+    bottom: 0;
+    left: -30px; /* Compensa o padding do container pai */
+    transform: translate(-30px, 41px); /**/
+    width: calc(100% + 60px); /* Ocupa a largura total, incluindo o padding */
+    display: flex;
+    justify-content: center;
+    padding: 40px 0 15px; /* Espaçamento para o gradiente e a seta */
+    background: linear-gradient(to top, rgb(22 26 37 / 89%), transparent);
+
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-arrow img {
+    /* A animação foi movida para a imagem para funcionar com o container flex */
+    animation: bounce 2s infinite;
+    /* A cor original do SVG (#e3e3e3) funciona bem com o fundo escuro */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* Classes de controle via JS */
+#letter-content.is-scrollable .scroll-arrow {
+    opacity: 1;
+}
+
+#letter-content.scrolled-to-bottom .scroll-arrow {
+    opacity: 0;
+}
+
+#letter-view.visible #letter-content {
+    opacity: 1;
+    transform: scale(1) rotate(var(--initial-rotate));
+}
+
+/* Estado de zoom para cartas não roláveis (mais específico para sobrescrever) */
+#letter-view.visible #letter-content.zoomed {
+    transform: scale(1.8) rotate(var(--initial-rotate));
+}
+
+.close-letter-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #8c7b6c;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+#letter-title {
+    font-family: "Instrument Serif", serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #6b5b4b;
+    text-align: left;
+}
+
+#letter-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    font-family: "Funnel Display", sans-serif;
+    
+}
+
+#music-div {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(sky.jpg);
+    border-radius: 39px;
+    background-size: cover;
+    background-position: center;
+    width: 85%;
+    height: 400px;
+    padding: 20px;
+    margin-top: 2em;
+
+}
+
+#music-div #music-control {
+
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff4d;
+    padding: 20px;
+    border-radius: 31px;
+    backdrop-filter: blur(1px);
+    border: 1px solid white;
+    box-shadow: inset 0 5px 15px 9px #ffffff91;
+
+}
+
+#music-div #music-control #music-buttons {
+
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+
+}
+
+#music-div #music-control #music-thumb {
+
+    margin-top: 15px;
+    height: 6px;
+    width: 100%;
+    background-color: #ffffff5c;
+    box-shadow: inset 0 0 2px 0px #ffffff;
+    border-radius: 5px;
+    border: solid 1px white;
+
+}
+
+#music-div #music-control #music-thumb #music-thumb-fill {
+ 
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 10%;
+    height: 100%;
+    background-color: #9bb8ff;
+    border-radius: 10px;
+    box-shadow: inset 0 -0.4px 1px 1px #72a4ef;
+
+}
+
+#music-div #music-control #music-thumb #music-thumb-fill #music-thumb-circle {
+
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 8px;
+    background-color: #9ab7ff;
+    min-width: 0.6em;
+    position: relative;
+    left: 7px;
+    box-shadow: inset 0px -1px 2px 1.8px #5c7fd5;
+    border: 1px solid white;
+
+}
+
+#music-div #musics {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 230px;
+    margin-top: 20px;
+    padding: 20px;
+    backdrop-filter: blur(1px);
+    border: 1px solid white;
+    box-shadow: inset 0 5px 15px 9px #ffffff91;
+    border-radius: 31px;
+    gap: 10px;
+    
+}
+
+.music {
+    display: flex;
+    align-items: center;
+    border-radius: 7px;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.396);
+    border-radius: 11px;
+    border: 1px solid white;
+    backdrop-filter: blur(1px);
+    box-shadow: inset 0 5px 15px 9px #ffffff91;
+    padding: 5px;
+    justify-content: space-between;
+    transition: transform 0.2s ease-out 0s, box-shadow 0.1s ease-out 0s;
+    cursor: pointer;
+
+}
+
+.music.play {
+
+    width: 90%;
+
+}
+
+.music:hover {
+    transform: scale(0.97);
+}
+
+.music:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 5px 15px 15px #ffffff91;
+
+
+}
+
+
+.music img {
+
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 7px;
+    
+}
+
+.music .music-info {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+.music .music-info .music-title {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-size: 25px;
+    height: 30px;
+    width: 149px;
+    overflow: hidden;
+    position: relative;
+    text-align: end;
+}
+
+.music .music-info .music-title span {
+    white-space: nowrap;
+    position: absolute;
+}
+
+.music-info .music-title.scrolling{
+    text-align: justify;
+}
+
+.music:hover  {
+    .music-info .music-title.scrolling span{
+        animation: marquee 4s alternate infinite ease-in-out;
+    }
+}
+
+.music .music-info .music-artist {
+    margin: 0;
+    font-size: 10px;
+    color: #526778;
+    font-family: "Funnel Display", sans-serif;
+    
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(calc(149px - 100% - 10px));
+    }
+}
+
+.grafitDiv {
+    background-image: url(grafite.png);
+    align-self: stretch;
+    min-height: 100%;
+    height: 592px;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-size: 188%;
+    background-repeat: no-repeat;
+}
+
+#penG {
+
+    background-image: url(caneta.png);
+    width: 50px;
+    height: 100px;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    transform: rotate(40deg);
+}
+
+#light {
+    background-position: center;
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+}
+
+
+.lightDiv {
+    width: 50%;
+}
+
+.lightDiv img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sec img{
+    transform: rotateY(180deg);
+}
+
+
+
+#shadow {
+    width: 100%;
+    height: 500px;
+    min-height: 100%;
+    background: #000000;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(46, 44, 71, 1) 89%, rgba(51, 28, 82, 0) 98%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#shadow.active {
+    background: none;
+    background-color: #e8c06a;
+}
+
+#shadow #sdwTxt {
+    color: rgb(104, 104, 106);
+    position: relative;
+}
+
+#shadow.active #sdwTxt {
+    display: none;
+}
+
+.p-btn {
+
+    margin: 30px;
+    width: 250px;
+    height: 50px;
+    box-shadow: #000000 3px 3px 12px 1px;
+    transform: rotate(4deg);
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+.p-btn.p {
+    transform: rotate(-4deg);
+}
+
+.p-btn:hover {
+    transform: rotate(3deg) scale(1.1);
+}
+
+.p-btn.p:hover {
+    transform: rotate(-3deg)scale(1.1);
+}
+
+#energyOverlay {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 4000;
+    transition: 5s;
+}
+
+#energyOverlay.active {
+    display: flex;
+    flex-direction: column;
+    background-color: #e8c06a;
+    animation: energyFill 1s;
+}
+
+#energyOverlay p {
+
+    color: white;
+    text-shadow: rgb(255, 255, 255) 0 0 20px;
+
+}
+
+.energyBtn {
+
+    margin-top: 50px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    transition: 0.5 ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    transition: 2s opacity;
+}
+
+.energyBtn.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.energyBtn:hover {
+    color: rgba(255, 255, 255, 0.658);
+}
+
+@keyframes energyFill {
+    
+    0% {opacity: 0;}
+
+    20% {opacity: 1;}
+
+    100% {opacity: 1;}
+}
+
+.cardBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    background-image: url('https://i.pinimg.com/736x/94/da/16/94da16139bb6ffdedb1ca861f8b71427.jpg');
+    width: 100%;
+    aspect-ratio: 165 / 228;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 100px 0;
+    height: 500px;
+}
+
+.cardBox .c-text {
+    color: rgb(111 84 24);
+
+}
+
+.cardBox .c-btn {
+    background-color: #966b3f;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 175px;
+    position: relative;
+}
+
+.c-btn.active::after {
+    content: '';
+    height: 50px;
+    width: 50px;
+    background-image: url(https://png.pngtree.com/png-vector/20231123/ourmid/pngtree-close-up-of-crumpled-paper-ball-frown-png-image_10617267.png);
+    position: absolute;
+    background-size: cover;
+    right: -17px;
+    top: -24px;
+}
+
+.c-btn.active::before {
+    content: '';
+    height: 50px;
+    width: 50px;
+    background-image: url(https://png.pngtree.com/png-vector/20231123/ourmid/pngtree-close-up-of-crumpled-paper-ball-frown-png-image_10617267.png);
+    position: absolute;
+    background-size: cover;
+    left: -30px;
+    bottom: -24px;
+}
+
+.cp-btn {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+    background-image: url('https://png.pngtree.com/png-vector/20231123/ourmid/pngtree-close-up-of-crumpled-paper-ball-frown-png-image_10617267.png');
+    z-index: 50;
+    cursor: pointer;
+    min-height: 80px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+
+
+#miniPaperLight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e8c06a;
+    z-index: 5000;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#miniPaperLight.active {
+    animation: miniLight 2s ease-in-out forwards;
+}
+
+@keyframes miniLight {
+    0% {opacity: 0;}
+    4% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.shadow-content {
+    display: none;
+}
+
+.theater {
+    width: 100%;
+    background-image: url('https://i.pinimg.com/736x/a4/db/56/a4db563a25681cc1de8bbecfc79feb79.jpg');
+    height: 500px;
+}
+
+#photo-notification {
+    position: fixed;
+    top: -100px; /* Começa fora da tela */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    z-index: 100;
+    transition: top 0.5s ease-in-out;
+}
+
+#photo-notification::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url('https://i.redd.it/w6a6775zvp661.gif');
+    background-size: cover;
+    background-position: -40px;
+    opacity: 0.5;
+}
+
+#photo-notification::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(4px);
+}
+
+#photo-notification.show {
+    top: 20px; /* Posição final na tela */
+}
+
+#photo-notification-img {
+    width: 50px;
+    height: 50px;
+
+    margin-right: 15px;
+    z-index: 200;
+}
+
+#photo-notification-text {
+    font-size: 1rem;
+    z-index: 200;
+}
