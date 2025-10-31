@@ -1864,15 +1864,17 @@ body.zooming {
 }
 
 .hidden-trigger {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    background-color: #07ff00; /* Same as the background of the main section */
+    position: fixed; /* Change to fixed to ensure it's always in viewport */
+    bottom: 20px;
+    right: 20px;
+    width: 80px; /* Make it larger */
+    height: 80px; /* Make it larger */
+    background-color: red; /* Make it a prominent color */
     cursor: pointer;
-    border: none;
-    z-index: 100; /* To be on top of other elements */
+    border: 5px solid yellow; /* Add a border for visibility */
+    z-index: 99999; /* Ensure it's on top of everything */
+    display: block !important; /* Ensure it's always displayed */
+    opacity: 1 !important; /* Ensure it's not transparent */
 }
 
 #startD {
