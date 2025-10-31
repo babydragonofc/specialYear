@@ -1838,7 +1838,7 @@ body.zooming {
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    bottom: 10px;
+    bottom: 40px;
 
 }
 
@@ -1861,6 +1861,8 @@ body.zooming {
     cursor: pointer;
     margin-top: 20px;
     min-height: 50px;
+    position: absolute;
+    bottom: 30px;
 }
 
 .hidden-trigger {
