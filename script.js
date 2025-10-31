@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Lógica da Animação de Onda para o "Magic Secret" ---
-    const magicSecretEl = document.getElementById('magicSecret');
+    const magicSecretEl = getEl('magicSecret');
     if (magicSecretEl) { // Verifica se o elemento existe
         const magicSecretText = magicSecretEl.textContent;
         magicSecretEl.innerHTML = ''; // Limpa o texto original
@@ -44,16 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Lógica para o botão de entrada
     const body = document.querySelector('body');
-    const enterButton = document.getElementById('enter-btn');
+    const enterButton = getEl('enter-btn');
     const welcomeScreen = document.querySelector('.welcome-screen');
     const mainContent = document.querySelector('.main-content');
 
-    const galleryButton = document.getElementById('gallery-btn');
-    const messagesButton = document.getElementById('messages-btn');
-    const extrasButton = document.getElementById('extras-btn');
+    const galleryButton = getEl('gallery-btn');
+    const messagesButton = getEl('messages-btn');
+    const extrasButton = getEl('extras-btn');
 
-    const totalSecrets = document.getElementById('totalSecrets');
-    const secretsNumber = document.getElementById('secretsNumber');
+    const totalSecrets = getEl('totalSecrets');
+    const secretsNumber = getEl('secretsNumber');
 
 
     // Adiciona um listener para o clique no botão
@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Lógica para o botão da galeria
-    const gallery = document.getElementById('galeria');
-    const overlay = document.getElementById('overlay');
-    const messagesSection = document.getElementById('mensagens');
-    const extrasSection = document.getElementById('extras');
+    const gallery = getEl('galeria');
+    const overlay = getEl('overlay');
+    const messagesSection = getEl('mensagens');
+    const extrasSection = getEl('extras');
     const messagesMain = document.querySelector('#mensagens main');
 
     // Função genérica para fechar seções ao clicar no fundo
@@ -119,18 +119,18 @@ document.addEventListener('DOMContentLoaded', () => {
             photos = JSON.parse(saved);
         } else {
             photos = [
-                {name: "pezinho <3",                        img: "photos/photo(1).jpeg",  img2: "photos/photo(4).jpeg" ,rotate: 10,  writed: false},
-                {name: "NÃO ME FAÇA DE PALHAÇA...",         img: "photos/photo(2).jpeg",  img2: "photos/photo(1).jpeg" ,rotate: -5,  writed: false},
-                {name: "O nerd e a rainha",                 img: "photos/photo(3).jpeg",  img2: "photos/photo(2).jpeg" ,rotate: 15,  writed: false},
-                {name: "Tava no meu bolso :(",              img: "photos/photo(4).jpeg",  img2: "photos/photo(4).jpeg" ,rotate: -10, writed: false},
-                {name: "*Cabecinhas*",                      img: "photos/photo(5).jpeg",  img2: "photos/photo(5).jpeg" ,rotate: 8,   writed: false},
-                {name: 'Sorrisos são pra sempre com você',  img: "photos/photo(6).jpeg",  img2: "photos/photo(7).jpeg" ,rotate: 0,   writed: false},
-                {name: "Você aceita?",                      img: "photos/photo(7).jpeg",  img2: "photos/photo(8).jpeg" ,rotate: -12, writed: false},
-                {name: "Lembra? No fim, valeu a pena :D",   img: "photos/photo(8).jpeg",  img2: "photos/photo(8).jpeg" ,rotate: 20,  writed: false},
-                {name: "Meu coração é todo seu <3",         img: "photos/photo(9).jpeg",  img2: "photos/photo(9).jpeg" ,rotate: -3,  writed: false},
+                {name: "pezinho <3",                        img: "photos/photo(1).jpeg",  img2: "photos/photo(1)p.jpeg" ,rotate: 10,  writed: false},
+                {name: "NÃO ME FAÇA DE PALHAÇA...",         img: "photos/photo(2).jpeg",  img2: "photos/photo(2)p.jpg" ,rotate: -5,  writed: false},
+                {name: "O nerd e a rainha",                 img: "photos/photo(3).jpeg",  img2: "photos/photo(3)p.jpg" ,rotate: 15,  writed: false},
+                {name: "Tava no meu bolso :(",              img: "photos/photo(4).jpeg",  img2: "photos/photo(4)p.jpg" ,rotate: -10, writed: false},
+                {name: "*Cabecinhas*",                      img: "photos/photo(5).jpeg",  img2: "photos/photo(5)p.jpg" ,rotate: 8,   writed: false},
+                {name: 'Sorrisos são pra sempre com você',  img: "photos/photo(6).jpeg",  img2: "photos/photo(6)p.jpg" ,rotate: 0,   writed: false},
+                {name: "Você aceita?",                      img: "photos/photo(7).jpeg",  img2: "photos/photo(7)p.jpg" ,rotate: -12, writed: false},
+                {name: "Lembra? No fim, valeu a pena :D",   img: "photos/photo(8).jpeg",  img2: "photos/photo(8)p.jpg" ,rotate: 20,  writed: false},
+                {name: "Meu coração é todo seu <3",         img: "photos/photo(9).jpeg",  img2: "photos/photo(9)p.jpg" ,rotate: -3,  writed: false},
                 {name: '"A" + "legal',                      img: "photos/photo(10).jpeg", img2: "photos/photo(10).jpeg",rotate: 12,  writed: false},
-                {name: "Minha princessa sorrindo",          img: "photos/photo(11).jpeg", img2: "photos/photo(11).jpeg",rotate: -8,  writed: false},
-                {name: "Acho que falta algo...",            img: "photos/paperEnerg.png", img2: "photos/paperEnerg.png",rotate: 5,   writed: false}
+                {name: "Minha princessa sorrindo",          img: "photos/photo(11).jpeg", img2: "photos/photo(11)p.jpg",rotate: -8,  writed: false},
+                {name: "Acho que falta algo...",            img: "photos/paperEnerg.png", img2: "photos/paperEnergp.png",rotate: 5,   writed: false}
             ];
         }
     }
@@ -138,8 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function addPhoto(name, img, img2, rotate) {
         photos.push({name: name, img: img, img2: img2, rotate: rotate, writed: false});
 
-        const notification = document.getElementById('photo-notification');
-        const notificationText = document.getElementById('photo-notification-text');
+        const notification = getEl('photo-notification');
+        const notificationText = getEl('photo-notification-text');
 
         notificationText.textContent = "Novas memórias foram resgatadas";
 
@@ -164,28 +164,172 @@ document.addEventListener('DOMContentLoaded', () => {
             secrets = JSON.parse(saved);
             secrets.forEach(el => {
                 if (el.find && el.obj != false) {
-                    document.getElementById(el.obj).style.display = "none";
+                    getEl(el.obj).style.display = "none";
                 }
+
+                        if (secrets.filter(secret => secret.find).length === secrets.length) {
+            getEl('startD').style.display = 'flex';
+        }
             });
         } else {
             secrets = [
                 {name: '"Aceito"', desc: "Uma eterna e sagrada união <br> da alma e do corpo em um só.", find: false, obj: false},
-                {name: "Caneta", desc: "Escrever nossa história <br> para ninguém apagar <br> (vá à galeria)", find: false, obj: "penG"}
+                {name: "Caneta", desc: "Escrever nossa história <br> para ninguém apagar <br> (vá à galeria)", find: false, obj: "penG"},
+                {name: "Barquinho", desc: "Espero poder viajar com você pelo mundo todo <3", find: false, obj: false},
+                {name: '"Pedra roxa"', desc: "Uma pedra roxa com uma fita vhs", find: false, obj:"ametista"},
+                {name: "Axoloteeee", desc: "Eu criaria um com você (Se não fosse crime ¬¬)", find: false, obj: "axolotl-secret"}
             ];
         }
     }
 
     loadSecrets();
 
-    var cards = [
-        {title: "1 ANO", text: "1, 2, 4, 8, 10, 12... passou rápido? Nah <br> Honestamente, cada momento com você foi especial a um nível que eu não me imagino sem você, afinal, são 12 messes kkk. <br> Eu espero que esse tenha sido só o começo de tudo, um bom começo, mas não um começo fácil, mas eu estou muito feliz em poder superar tudo isso com você, com a pessoa a qual eu quero dedicar a minha vida e meu cuidado, a pessoa que eu quero do meu lado, nos momentos bons e nos ruins, na saúde e na doença<br> espero construir uma família solida com você, ter um casamento saudável e uma casinha, te dar as coisas que você não teve<br><br>Esse é só o começo :)", img: "cards/10636332.jpg", front:"cards/10636332.jpg", rotate: 3, bg: true, imgFill: false, width: "auto"},
-        {title: "", text: "", img: "cards/claricePaper.png", front:"cards/capaClaricePaper.png", rotate: -5, bg: true, imgFill: true, width: "428px"},
-        {title: "", text: "", img:"cards/cerejeira.png", front:"cards/cerejeira.png", rotate: 3, bg: false, imgFill: true, width: "auto"}
-    ];
+    getEl('axolotl-secret').addEventListener('click', () => {
+        findSecret(4);
+        getEl('axolotl-secret').style.display = 'none';
+    });
+
+    var miniPaperColect = 0
+    var miniPapersColected = {
+        "gal": false,
+        "mes": false,
+        "ext": false
+    }
+
+    let data = {};
+
+    function saveData() {
+        localStorage.setItem('dataSave', JSON.stringify(data));
+    }
+
+    function dataSeting(dataI, value) {
+        data[dataI] = value
+        saveData()
+    }
+
+    var energy = false;
+
+    function loadData() {
+        const saved = localStorage.getItem('dataSave');
+        if (saved) {
+            data = JSON.parse(saved);
+            if(data["lightOn"]) {
+                energy = true
+                getEl("shadow").classList.add('active');
+                document.getElementsByClassName('lI')[0].src = "luz2.png";
+                document.getElementsByClassName('lI')[1].src = "luz2.png";
+
+                //logica de abertura de div
+
+                document.getElementsByClassName('c-btn')[0].classList.add('active')
+                getEl('sdwTxt').style.display = "none"
+                document.getElementsByClassName("shadow-content")[0].style.display = "flex"
+
+                getEl('mes').style.pointerEvents = "auto"
+                getEl('gal').style.pointerEvents = "auto"
+                getEl('mes').style.opacity = '1'
+                getEl('gal').style.opacity = '1'
+            };
+            if(data["alreadOpen"]) {
+                getEl("start").style.display = "none"
+                const faviconLink = document.getElementById("favicon");
+                faviconLink.href = "icon.png";
+                const title = document.querySelector('title')
+                title.innerHTML = "A Speciar Year"
+            }
+            miniPaperColect = data["miniPapers"]
+            miniPapersColected = data["miniPaper"]
+
+            if(data["miniPaper"]["gal"]) {
+                const el = getEl("gal").style
+                el.opacity = "0"
+                el.pointerEvents = "none"
+                if (miniPaperColect == 3) openRadio()
+            }
+
+            if(data["miniPaper"]["mes"]) {
+                const el = getEl("mes").style
+                el.opacity = "0"
+                el.pointerEvents = "none"
+                if (miniPaperColect == 3) openRadio()
+            }
+
+            if(data["miniPaper"]["ext"]) {
+                if (document.getElementsByClassName('c-btn')[0].classList.contains('active')) {
+                    document.getElementsByClassName('c-btn')[0].classList.remove('active')
+                }
+                if (miniPaperColect == 3) openRadio()
+            }
+
+            if(data["beachOpen"]) {
+                beachOpen()
+            }
+
+            if(data["foto1"]) {
+                const dPD = document.getElementsByClassName("dropedPhotos")[0]
+                dPD.style.display = "none"
+            }
+            if(data["blueTransitionOpened"]) {
+                getEl('morena-vhs-btn').style.display = 'block';
+            }
+        } else {
+            data = {
+                "lightOn": false,
+                "alreadOpen": false,
+                "miniPaper": {
+                    "gal"/*Sal*/: false,
+                    "mes": false,
+                    "ext": false
+                },
+                "miniPapers": 0,
+                "beachOpen" : false,
+                "foto1": false,
+                "blueTransitionOpened": false
+            };
+        }
+    }
+    loadData();
+
+    const cardsContainer = getEl('cards-container');
+    const letterView = getEl('letter-view');
+    const letterContent = getEl('letter-content');
+    const letterTitle = getEl('letter-title');
+    const letterText = getEl('letter-text');
+    const closeLetterBtn = document.querySelector('.close-letter-btn');
+    const letterZoomText = getEl('letter-zoom-text');
+
+    let cards = [];
+
+    function saveCards() {
+        localStorage.setItem('cardsSave', JSON.stringify(cards));
+    }
+
+    function loadCards() {
+        const savedCards = localStorage.getItem('cardsSave');
+        if (savedCards) {
+            cards = JSON.parse(savedCards);
+
+        } else {
+            cards = [
+                {title: "1 ANO", text: "1, 2, 4, 8, 10, 12... passou rápido? Nah <br> Honestamente, cada momento com você foi especial a um nível que eu não me imagino sem você, afinal, são 12 messes kkk. <br> Eu espero que esse tenha sido só o começo de tudo, um bom começo, mas não um começo fácil, mas eu estou muito feliz em poder superar tudo isso com você, com a pessoa a qual eu quero dedicar a minha vida e meu cuidado, a pessoa que eu quero do meu lado, nos momentos bons e nos ruins, na saúde e na doença<br> espero construir uma família solida com você, ter um casamento saudável e uma casinha, te dar as coisas que você não teve<br><br>Esse é só o começo :)", img: "cards/10636332.jpg", front:"cards/10636332.jpg", rotate: 3, bg: true, imgFill: false, width: "auto"},
+                {title: "", text: "", img: "cards/claricePaper.png", front:"cards/capaClaricePaper.png", rotate: -5, bg: true, imgFill: true, width: "428px"},
+                {title: "", text: "", img:"cards/cerejeira.png", front:"cards/cerejeira.png", rotate: 3, bg: false, imgFill: true, width: "auto"},
+                {title: "Cartinha", text: "yipiii yeay<br> eu to BEM feliz, com esse presente kk, fazer ele foi bem legal, embora tenha sido muito dificil<br>, eu realmente espero que você esteja gostando, esse foi um GRANDE projeto meu kk, assim como nosses :D<br> eu acho que dava pra ter ficado melhor mas é isso, eu n tenho muito tempo mesmo ksksk, <br> <img src='https://blob.gifcities.org/gifcities/4TYHWALHWWEAHAHV3KRYLTEVF4OJMW2U.gif'><br>, eu comecei a fazer ele desde setembro, mas eu realmente to feliz com o resultado, e tudo mais :D", img: "cards/10636332.jpg", front:"cards/10636332.jpg", rotate: -10, bg: true, imgFill: false, width: "auto", find: false}
+            ];
+        }
+    }
+
+    loadCards();
 
     const musics = [
         {name: "Tudo que eu sempre sonhei", artista: "pullover", file: "musics/Tudo_que_eu_sempre_sonhei.mp3", photo: "https://cdn-images.dzcdn.net/images/cover/33d70251f40848052b216707eff6830f/0x1900-000000-80-0-0.jpg"},
-        {name: "Uma arlinda mulher", artista: "Mamonas assasinas", file:"musics/Uma Arlinda Mulher - Mamonas Assassinas - SoundLoadMate.com.mp3", photo: "https://upload.wikimedia.org/wikipedia/pt/5/54/Musicasmamonasassassinas.jpg"}
+        {name: "Uma arlinda mulher", artista: "Mamonas assasinas", file:"musics/Uma Arlinda Mulher - Mamonas Assassinas - SoundLoadMate.com.mp3", photo: "https://upload.wikimedia.org/wikipedia/pt/5/54/Musicasmamonasassassinas.jpg"},
+        {name: "From the Start", artista: "Good Kid", file: "musics/From The Start - Good Kid - SoundLoadMate.com.mp3", photo: "https://i1.sndcdn.com/artworks-6XqQegnVczx7MvGD-oIO41Q-t500x500.jpg"},
+        {name: "Como é Grande meu Amor por Você", artista: "Caetano Veloso", file: "musics/01 Como é grande o meu amor por Você.mp3", photo: "c.jpg"},
+        {name: "Tek It", artista: "Cafuné", file: "musics/Tek_It_KLICKAUD.mp3" ,photo:"https://i1.sndcdn.com/artworks-000629690896-59t9zn-t1080x1080.jpg"},
+        {name: "Her", artista: "JVKE", file: "musics/her_KLICKAUD.mp3", photo: "https://i1.sndcdn.com/artworks-OZdapPajMSfZ-0-t1080x1080.jpg"},
+        {name: "undressed", artista: "sombr", file: "musics/undressed_KLICKAUD.mp3", photo: "https://i1.sndcdn.com/artworks-eas5o4uz5miQ-0-t1080x1080.jpg"},
+        {name: "rises the moon", artista: "liana flores", file: "musics/rises_the_moon_KLICKAUD.mp3", photo: "https://i1.sndcdn.com/artworks-cG3zkXfFH8MzyrEb-jjbDoQ-t1080x1080.jpg"}
     ];
 
     totalSecrets.innerHTML = secrets.length;
@@ -198,9 +342,28 @@ document.addEventListener('DOMContentLoaded', () => {
         ...cards.map(c => c.front)
     ];
 
+    let tapes = [];
+
+    function saveTapes() {
+        localStorage.setItem('TapesSave', JSON.stringify(tapes));
+    }
+
+    function loadTapes() {
+        const saved = localStorage.getItem('TapesSave');
+        if (saved) {
+            tapes = JSON.parse(saved);
+        } else {
+            tapes = [
+                {name: "Stardew Valley" ,img: "tapes/sVTape.png", content: "vhs.mp4", time: 5, find: false},
+                {name: "Morena", img: "tapes/vhsBase.png", content: "tapes/Witch Bunny.mp4", find: false},
+                {name: "CMD", img: "tapes/cmd.png", content: "tapes/oi.mp4", find: false, password: "IANSICTTSWH"}
+            ];
+        }
+    }
+    loadTapes();
+
     preloadImages(allImageUrls)
         .then(() => {
-            console.log('Todas as imagens foram pré-carregadas com sucesso!');
             enterButton.disabled = false;
             enterButton.textContent = 'Entrar';
         })
@@ -211,8 +374,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     const photosContainer = document.querySelector('.photos-container');
-    const writeBtn = document.getElementById('write-btn');
-    const eraseBtn = document.getElementById('erase-btn');
+    const writeBtn = getEl('write-btn');
+    const eraseBtn = getEl('erase-btn');
 
          //a
     let photoSelected = 0;
@@ -221,14 +384,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const animationDuration = 500; // Deve ser igual à duração da transição no CSS (0.5s)
 
     // Seleciona os elementos da galeria
-    const photoEl0 = document.getElementById('photo-0');
-    const photoEl1 = document.getElementById('photo-1');
-    const photoEl2 = document.getElementById('photo-2');
-    const photoEl0Overlay = document.getElementById('photo-0-overlay');
-    const photoEl1Overlay = document.getElementById('photo-1-overlay');
-    const photoEl2Overlay = document.getElementById('photo-2-overlay');
+    const photoEl0 = getEl('photo-0');
+    const photoEl1 = getEl('photo-1');
+    const photoEl2 = getEl('photo-2');
+    const photoEl0Overlay = getEl('photo-0-overlay');
+    const photoEl1Overlay = getEl('photo-1-overlay');
+    const photoEl2Overlay = getEl('photo-2-overlay');
 
-    const photoNameDisplay = document.getElementById('photoNameDisplay');
+    const photoNameDisplay = getEl('photoNameDisplay');
     
     // Array para gerenciar os elementos DOM e suas posições.
     // A ordem no array representa a posição visual: [esquerda, centro, direita]
@@ -280,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Após um breve atraso (quando o cartão está "atrás"), atualiza sua imagem.
         setTimeout(() => {
             const nextIndex = (photoSelected + 1) % photos.length;
-            recycledElement.overlay.style.backgroundImage = `url('${photos[nextIndex].img}')`;
+            recycledElement.overlay.style.backgroundImage = `url('${photos[nextIndex].writed? photos[nextIndex].img2 :photos[nextIndex].img}')`;
         }, animationDuration / 2.5); // Um pouco menos da metade da animação.
 
         // Após a animação, restaura o z-index de todos os elementos para o estado correto.
@@ -312,11 +475,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Renderiza as novas posições, pulando a atualização da imagem do elemento reciclado.
         renderPhotos(recycledElement);
-
+        
         // Após um breve atraso, atualiza a imagem do cartão reciclado.
         setTimeout(() => {
             const prevIndex = (photoSelected - 1 + photos.length) % photos.length;
-            recycledElement.overlay.style.backgroundImage = `url('${photos[prevIndex].img}')`;
+            recycledElement.overlay.style.backgroundImage = `url('${photos[prevIndex].writed? photos[prevIndex].img2 :photos[prevIndex].img}')`;
         }, animationDuration / 2.5);
 
         // Após a animação, restaura o z-index de todos os elementos para o estado correto.
@@ -342,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navigatePrev();
         } else if (clickedPhoto === photoElements[1].el) { // Elemento do centro
             // Ação para o clique na foto do meio.
-            if (photoSelected == 5) {
+            if (photoSelected == 6) {
                 findSecret(0)
             }
 
@@ -363,7 +526,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const center = photoElements[1];
         const right = photoElements[2];
 
-        if (photoSelected == 5) {
+        left.el.dataset.index = prevIndex;
+        center.el.dataset.index = photoSelected;
+        right.el.dataset.index = nextIndex;
+
+        if (photoSelected == 6) {
             center.el.classList.add('star');
         } else {
             center.el.classList.remove('star');
@@ -459,8 +626,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     function findSecret(secretId) {
-        const secretMsgName = document.getElementById('secretMsgName');
-        const secretMsgText = document.getElementById('secretMsgText');
+        const secretMsgName = getEl('secretMsgName');
+        const secretMsgText = getEl('secretMsgText');
         secretMsgText.innerHTML = '';
         secretMsgName.innerHTML = secrets[secretId].name;
         overlay.classList.add('visible');
@@ -468,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const descText = secrets[secretId].desc;
         const typingSpeed = 40;
         const animationStartDelay = 700;
-        const magicSecret = document.getElementById('magicSecret');
+        const magicSecret = getEl('magicSecret');
         
         const lines = descText.split(/<br\s*\/?>/i);
         lines.forEach((line, lineIndex) => {
@@ -497,6 +664,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 span.classList.add('visible');
             }, animationStartDelay + (index * typingSpeed));
         });
+
+        if (secrets.filter(secret => secret.find).length === secrets.length) {
+            getEl('startD').style.display = 'flex';
+        }
     }
 
     overlay.addEventListener('click', (event) => {
@@ -507,14 +678,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 400);
         }
     });
-
-    const cardsContainer = document.getElementById('cards-container');
-    const letterView = document.getElementById('letter-view');
-    const letterContent = document.getElementById('letter-content');
-    const letterTitle = document.getElementById('letter-title');
-    const letterText = document.getElementById('letter-text');
-    const closeLetterBtn = document.querySelector('.close-letter-btn');
-    const letterZoomText = document.getElementById('letter-zoom-text');
 
     let isPanning = false;
     let startX = 0, startY = 0;
@@ -585,6 +748,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Rola suavemente para o final para mostrar a nova carta
         // Isso funciona por causa do `scroll-behavior: smooth;` no CSS
+        saveCards()
     }
 
     function openCard(cardId) {
@@ -605,14 +769,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         letterContent.style.boxShadow = cardData.bg? "0 10px 30px rgba(0, 0, 0, 0.3)": "none";
         letterContent.style.backgroundRepeat = cardData.bg? "repeat": "no-repeat";
-        console.log(letterContent.style.backgroundRepeat)
 
         if (cardData.width != "auto") {
-            console.log(cardData.width)
             letterContent.style.width = cardData.width;
         }
         else {
-            console.log('b')
             letterContent.style.width = "100%"
         }
         // Usa um timeout para garantir que o navegador calculou as alturas
@@ -676,14 +837,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    addCard(0);
-    addCard(1);
-    addCard(2)
-
-
-
-
-
 
 
     function closeLetterView() {
@@ -705,10 +858,10 @@ document.addEventListener('DOMContentLoaded', () => {
         letterContent.classList.toggle('scrolled-to-bottom', isAtBottom);
     });
     
-    const audioPlayer = document.getElementById('audio');
-    const pauseBtn = document.getElementById("pause-btn");
-    const musicThumbFill = document.getElementById("music-thumb-fill");
-    const musicsD = document.getElementById('musics');
+    const audioPlayer = getEl('audio');
+    const pauseBtn = getEl("pause-btn");
+    const musicThumbFill = getEl("music-thumb-fill");
+    const musicsD = getEl('musics');
 
     let musicSelectedN = null;
     let musicSelected = null;
@@ -743,6 +896,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function playMusic() {
+        if (musicSelectedN == null) return;
         audioPlayer.play();
         pauseBtn.children[0].src = "unpause.svg";
     }
@@ -767,19 +921,19 @@ document.addEventListener('DOMContentLoaded', () => {
         pauseBtn.children[0].src = "pause.svg";
     });
 
-    const penG = document.getElementById("penG");
+    const penG = getEl("penG");
     penG.addEventListener("click", () => {
         findSecret(1);
         penG.style.display = "none";
     });
     
-    var energy = false;
+    
     function energyFill() {
-        const energyOverlay = document.getElementById('energyOverlay');
+        const energyOverlay = getEl('energyOverlay');
         const energyText = energyOverlay.querySelector('.energyText');
         const text = energyText.textContent;
 
-        document.getElementById('energyOverlay').classList.add("active");
+        getEl('energyOverlay').classList.add("active");
         energy = true;
 
         // Limpa o texto e o reescreve letra por letra
@@ -800,42 +954,104 @@ document.addEventListener('DOMContentLoaded', () => {
         // Atraso para começar a escrever depois da animação do overlay
         setTimeout(typeWriter, 1000); // 1s, igual à duração da animação energyFill
 
-        document.getElementById("shadow").classList.add('active');
+        getEl("shadow").classList.add('active');
         document.getElementsByClassName('lI')[0].src = "luz2.png";
         document.getElementsByClassName('lI')[1].src = "luz2.png";
 
         //logica de abertura de div
 
         document.getElementsByClassName('c-btn')[0].classList.add('active')
-        document.getElementById('sdwTxt').style.display = "none"
+        getEl('sdwTxt').style.display = "none"
         document.getElementsByClassName("shadow-content")[0].style.display = "flex"
 
-        document.getElementById('msg').style.pointerEvents = "auto"
-        document.getElementById('gal').style.pointerEvents = "auto"
-        document.getElementById('msg').style.opacity = '1'
-        document.getElementById('gal').style.opacity = '1'
+        setTimeout(() => {
+        
+            getEl('mes').style.pointerEvents = "auto"
+            getEl('gal').style.pointerEvents = "auto"
+            getEl('mes').style.opacity = '1'
+            getEl('gal').style.opacity = '1'
+        }, 100);
+
+        dataSeting("lightOn", true);
+
     }
 
     document.getElementsByClassName('energyBtn')[0].addEventListener("click", function() {
-        document.getElementById("energyOverlay").style.opacity = "0"
+        getEl("energyOverlay").style.opacity = "0"
+        getEl("energyOverlay").style.pointerEvents = "none"
         setTimeout(function() {
-            document.getElementById("energyOverlay").style.display = "none"
+            getEl("energyOverlay").style.display = "none"
         }, 6000)
     })
 
-    document.getElementById('msg').addEventListener('click', function(){ miniPaperOpen(0)})
-    document.getElementById('gal').addEventListener('click', function(){ miniPaperOpen(1)})
+    getEl('mes').addEventListener('click', function(){ miniPaperOpen(0)})
+    getEl('gal').addEventListener('click', function(){ miniPaperOpen(1)})
 
-    
+
     const miniPapers = [
-        'msg',
-        'gal',
-        'ext'
+        {id: 'mes', photoName: "MiniLLicia :O", photoFile:"photos/cute (3).jpg", photoDFile: "photos/cute (3)d.jpg",rotate:  -2},
+        {id: 'gal', photoName: "Miau :3", photoFile:"photos/cute (2).jpg", photoDFile: "photos/cute (2)d.jpg", rotate: -10},
+        {id: 'ext', photo: "COISINHA LINDAAAA", photoFile:"photos/cute (1).jpg", photoDFile: "photos/cute (1)d.jpg", rotate: 6}
+    ]
+    
+    document.getElementsByClassName('c-btn')[0].addEventListener('click', futurePapers)
+
+    const futurePapersL = [
+        {color: "red", text: "Quero ter uma casinha com você <3"},
+        {color: "blue", text: "Nossa casinha vai ter varias coisas velhas kk"},
+        {color: "yellow", text: "AYLINHAAA <3"},
+        {color: "white", text: "esse codigo tem mais de 1242 linhas de JS" },
+        {color: "red", text: "365 dias"},
+        {color: "red", text: "8766 horas"},
+        {color: "red", text: "525960 minutos"},
+        {color: "red", text: "~3,156e+7 segundos"},
+        {color: "red", text: "Mais de 10.000 mensagens"},
+        {color: "red", text: "Mais de 3000 litros de água"},
+        {color: "red", text: "36,5 milhões de batimentos cardiacos"},
+        {color: "yellow", text: "Vestir aquelas roupas bem bregas com vc kk"},
+        {color: "blue", text: "eu Te amo"},
+        {color: "blue", text: "愛してます"},
+        {color: "blue", text: "Je t'aime"},
+        {color: "blue", text: "σε αγαπώ"},
+        {color: "blue", text: "사랑해요"},
+        {color: "blue", text: "Ich liebe dich"},
+        {color: "blue", text: "Я тебя люблю"},
+        {color: "我愛你", text: "我愛你"},
+        {color: "yellow", text: "Imagina ser tipo o centro de reunião do grupinho de Ayla"},
+        {color: "yellow", text: "Espero que Deus acompanhe a gente para sempre"},
+        {color: "yellow", text: "Não vou fazer sua mãe se arrepender!"},
+        {color: "yellow", text: "-Eu tô te seguindo."},
+        {color: "yellow", text: "--Panetone Salgado"},
+        {color: "green", text: "O primeiro"},
+        {color: "green", text: "Quero dançar com você"},
+        {color: "green", text: "MINEPOEM"},
+        {color: "purple", text: "Iaeee :D 1"},
+        {color: "purple", text: "Allícia = Meu amor 2"},
+        {color: "purple", text: "Não entendo por que, mas te amo desde de quando te vi 3"},
+        {color: "purple", text: "Sempre vou te amar 4"},
+        {color: "purple", text: "Incrivel como você está nos meus melhores sonhos. 5"},
+        {color: "purple", text: "Com você meus dias são melhores. 6"},
+        {color: "purple", text: "Te amo para todo o sempre. 7"},
+        {color: "purple", text: "Te acho incrivel. 8"},
+        {color: "purple", text: "Sempre iluminando meus dias ruins. 9"},
+        {color: "purple", text: "WORLD IS SMALL WITH U. 10"},
+        {color: "purple", text: "Hello my love :DD 11"},
+        {color: "red", text: "O codigo será todas a primeira letra das cartas roxas"}
     ]
 
-    var miniPaperColect = 0
-
-    document.getElementsByClassName('c-btn')[0].addEventListener('click', futurePapers)
+    
+    const futurePaperD = getEl('futurePaperBox')
+    const futurePaper = getEl('futurePaper')
+    const futurePaperText = getEl('futurePaperText')
+    const MINEPOEM = "Era uma vez um jogador.<br>O jogador era você, abc.<br>Às vezes, ele se considerava humano, na fina crosta de um globo giratório de rocha derretida. A esfera de rocha derretida circundava uma esfera de gás em chamas trezentas e trinta mil vezes mais massiva que ela. Estavam tão distantes que a luz levava oito minutos para atravessar a lacuna. A luz era informação de uma estrela e podia queimar sua pele a cento e cinquenta milhões de quilômetros de distância.<br>Às vezes, o jogador sonhava que era um mineiro, na superfície de um mundo plano e infinito. O sol era um quadrado branco. Os dias eram curtos; havia muito a fazer; e a morte era um inconveniente temporário.<br>Às vezes, o jogador sonhava que estava perdido em uma história.<br>Às vezes, o jogador sonhava que eram outras coisas, em outros lugares. Às vezes, esses sonhos eram perturbadores. Às vezes, realmente lindos. Às vezes, o jogador acordava de um sonho para outro, e depois acordava deste para um terceiro.<brÀs vezes, o jogador sonhava que estava assistindo a palavras em uma tela.<br>Vamos voltar.<br>Os átomos do tocador estavam espalhados na grama, nos rios, no ar, no chão. Uma mulher reuniu os átomos; ela bebeu, comeu e inalou; e a mulher reuniu o tocador em seu corpo.<br>E o jogador acordou do mundo quente e escuro do corpo de sua mãe para um longo sonho.<br>E o jogador era uma nova história, nunca contada antes, escrita em letras de DNA. E o jogador era um novo programa, nunca executado antes, gerado por um código-fonte com um bilhão de anos. E o jogador era um novo ser humano, nunca antes vivo, feito de nada além de leite e amor.<br>Você é o jogador. A história. O programa. O ser humano. Feito apenas de leite e amor.<br>"
+    
+    const colors = {
+        "red": "#FF6961",
+        "blue": "#0faec3ff",
+        "yellow": "#FDFD96",
+        "green": "#8fff89ff",
+        "purple": "#DDA0DD"
+    }
 
     function futurePapers() {
         //verificar se tem a classe 'active'
@@ -844,47 +1060,548 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementsByClassName('c-btn')[0].classList.remove('active')
             return;
         }
+
+        futurePaperD.classList.add('active')
+        const number = getRandomIntInclusive(0, futurePapersL.length - 1)
+        const value = futurePapersL[number]
+        const paper = {text: value.text, color: value.color}
+
+        futurePaperText.innerHTML = paper.text
+        futurePaper.style.backgroundColor = colors[paper.color]
+
+        if(paper.text == "MINEPOEM") {
+            futurePaperText.innerHTML = MINEPOEM
+            futurePaperText.classList.add('MINEPOEM')
+        }
+
     }
+
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min); // Ensure min is an integer
+        max = Math.floor(max); // Ensure max is an integer
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    futurePaperD.addEventListener('click', function() {
+        futurePaperD.classList.remove('active')
+        futurePaperText.classList.remove('MINEPOEM')
+
+    })
 
     function miniPaperOpen(id) {
         if (miniPaperColect > 3) return;
 
+        addPhoto(miniPapers[id].photoName, miniPapers[id].photoFile, miniPapers[id].photoDFile, miniPapers[id].rotate)
+        miniPapersColected[miniPapers[id].id] = true;
+
+        dataSeting("miniPaper", miniPapersColected)
+
         miniPaperColect += 1;
+        dataSeting("miniPapers", miniPaperColect)
 
         if (id != 2) {
-            const el = document.getElementById(miniPapers[id]).style
+            const el = getEl(miniPapers[id].id).style
             el.opacity = "0"
             el.pointerEvents = "none"
         }
 
-        document.getElementById("miniPaperLight").classList.add('active')
+        getEl("miniPaperLight").classList.add('active')
         setTimeout(() => {
-            document.getElementById("miniPaperLight").classList.remove('active')
+            getEl("miniPaperLight").classList.remove('active')
         }, 2010);
 
         if (miniPaperColect == 3) {
-            openTheater()
+            openRadio()
         }
     }
 
-    function openTheater() {
+    function openRadio() {
+        document.getElementsByClassName('rTop')[0].style.display = 'none'
+        document.getElementsByClassName('rCon')[0].style.display = "flex"
+    }
+
+    const input = getEl('password');
+
+    // Detecta quando o usuário pressiona Enter ou envia pelo mobile
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Evita recarregar a página em formulários
+            enviarMensagem();
+        }
+    });
+
+    // Também cobre caso o navegador dispare evento 'change' ou 'input' em teclados móveis
+    input.addEventListener('change', function() {
+        if (input.value.trim() !== '') {
+            enviarMensagem();
+        }
+    });
+
+    const senhaD = 'YLOCCEEYLOVO'
+
+    function enviarMensagem() {
+        const valor = input.value.trim();
+        if (!valor) return; // ignora se estiver vazio
+        const senha = getEl('password').value
+
+        if (senha == senhaD) {
+            const start = getEl("start")
+            const sText = getEl("start-p")
+
+
+
+            const text = sText.textContent
+            sText.textContent = ''
+            getEl('s-1').style.display = "none"
+            getEl('s-2').style.opacity = "1"
+
+            setTimeout(typeWriter, 200);
+
+            let i = 0
+            function typeWriter() {
+                if (i < text.length) {
+                    sText.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100); // Velocidade de digitação
+                }
+                else {
+                   getEl("start-pc").style.opacity = "1"
+                    setTimeout(() => {
+                        start.style.opacity = "0"
+                        start.style.pointerEvents = "none"
+                        dataSeting("alreadOpen", true)
+                        const faviconLink = document.getElementById("favicon");
+                        faviconLink.href = "icon.png";
+                        const title = document.querySelector('title')
+                        title.innerHTML = "A Speciar Year"
+                    }, 2000)
+                }
+            }
         
+        }
+        else {
+            let text;
+            if (senha == "?") {
+                text = "> Dica: senha Caixa";
+            }
+            else {
+                text = "> Senha Errada! Tente novamente";
+            }
+
+            const spanT = document.createElement('span')
+            spanT.innerHTML = "> " + senha
+            getEl('s1Text').appendChild(spanT)
+            const span = document.createElement('span')
+            span.innerHTML = text
+            getEl('s1Text').appendChild(span)
+
+        }
     }
 
-    document.getElementById('En').addEventListener('click', function() {
-        const senha = document.getElementById('password').value
-        if (senha == '123') {
-            
-            const start = document.getElementById("start")
-            start.style.opacity = "0"
-            start.style.pointerEvents = "none"
+
+
+    const dPD = document.getElementsByClassName("dropedPhotos")[0]
+
+    dPD.addEventListener('click', function() {
+        dPD.style.display = "none"
+        addPhoto("Prainha :D", "photos/476416045_1839096826863128_8273132225842945347_n.jpg", "photos/476416045_1839096826863128_8273132225842945347_np.jpg", 10)
+        addPhoto("ZAWARADOOO", "photos/480105046_1055557732998374_2302750445809161488_n.jpg", "photos/480105046_1055557732998374_2302750445809161488_np.jpg", 5)
+        addPhoto("//O-O//",    "photos/480972682_28470636085918533_4271527333404328933_n.jpg", "photos/480972682_28470636085918533_4271527333404328933_np.jpg", -3)
+        renderPhotos()
+        dataSeting("foto1", true)
+    })
+
+    var frequency = 5.5
+    getEl('left-radio').addEventListener('click', function() {
+        if (frequency == 0) return;
+
+        frequency -= 0.5
+
+        document.getElementsByClassName("rCon")[0].style.backgroundImage = "url('radioEsquerda.png')"
+        setTimeout(() => {
+            if (frequency != 7.5) {
+                document.getElementsByClassName("rCon")[0].style.backgroundImage = "url('radioBase.png')"
+            }
+        }, 700);
+
+        radioF()
+
+    })
+
+    getEl('right-radio').addEventListener('click', function() {
+        if (frequency == 10) return;
+        
+        frequency += 0.5
+
+        document.getElementsByClassName("rCon")[0].style.backgroundImage = "url('radioDireita.png')"
+        setTimeout(() => {
+            if (frequency != 7.5) {
+                document.getElementsByClassName("rCon")[0].style.backgroundImage = "url('radioBase.png')"
+            }
+        }, 700);
+
+        radioF()
+    })
+    
+    function radioF() {
+
+        getEl('frequency').innerHTML = frequency
+
+        if (document.getElementsByClassName("rCon")[0].classList.contains('active')) {
+
+            document.getElementsByClassName("rCon")[0].style.backgroundImage = "url('radioBase.png')"
+
         }
+        document.getElementsByClassName("rCon")[0].classList.remove('active')
+
+        if (frequency != 7.5) return;
+
+        
+        document.getElementsByClassName("rCon")[0].classList.add('active')
+        
+        
+        setTimeout(() => {
+            document.getElementsByClassName("rCon")[0].style.backgroundImage = "none"
+        }, 100);
+        
+        setTimeout(() => {
+            if(frequency == 7.5) {
+                beachOpen() //AAEEEEEEEEEEEE 
+                dataSeting("beachOpen", true)
+            }
+        }, 5000)
+    }
+
+    function beachOpen() {
+        document.getElementsByClassName('rBtn')[0].style.display = "flex"
+        document.getElementsByClassName("rCon")[0].style.display = "none"
+    }
+
+  const rBtn = document.querySelector('.rBtn');
+  const blueTransition = document.getElementById('blueTransition');
+  
+  if (rBtn && blueTransition) {
+    rBtn.addEventListener('click', () => {
+      document.body.classList.add('zooming');
+
+      setTimeout(() => {
+        blueTransition.classList.add('active');
+        if (!data.blueTransitionOpened) {
+            dataSeting("blueTransitionOpened", true);
+            getEl('morena-vhs-btn').style.display = 'block';
+        }
+      }, 400);
+
+      setTimeout(() => {
+        document.body.classList.remove('zooming');
+      }, 1000);
+    });
+  }
+
+  const GamePhotosQ = 10;
+  var GamePhotoN = 1;
+
+  getEl('gameBtnLeft').addEventListener('click', function() {
+    if (GamePhotoN != 1) {
+        GamePhotoN-- 
+    }
+    else {
+        GamePhotoN = GamePhotosQ;
+    }
+    standBy(1.2)
+  })
+
+  getEl('gameBtnRight').addEventListener('click', function() {
+    if (GamePhotoN != GamePhotosQ) {
+        GamePhotoN++
+    }
+    else {
+        GamePhotoN = 1;
+    }
+    standBy(1.2)
+  })
+
+    function standBy(sec) {
+        const psb = getEl("PSB")
+        
+        psb.style.display = "block"
+        psb.play()
+        
+        setTimeout(() => {
+            psb.style.display = "none"
+            psb.pause()
+            psb.currentTime = 0
+        }, sec * 1000);
+
+        getEl('gamePhoto').src = "game/gamePhoto (" + GamePhotoN + ").png"
+    }
+
+    document.getElementsByClassName('backBtn')[0].addEventListener('click', function() {
+        blueTransition.classList.remove('active');
+    })
+    
+    document.getElementsByClassName("ship")[0].addEventListener('click', function(){
+        findSecret(2)    
+    })
+
+    document.getElementsByClassName("letterAdd")[0].addEventListener('click', function(){
+        cards[3].find = true
+        addCard(3)
+        document.getElementsByClassName("letterAdd")[0].style.display = "none"
+    })
+
+    getEl('ametista').addEventListener('click', function() {
+        if (tapes[0] && !tapes[0].find) {
+            tapes[0].find = true;
+            saveTapes();
+
+            const notification = getEl('photo-notification');
+            const notificationText = getEl('photo-notification-text');
+
+            notificationText.textContent = "Nova fita encontrada!";
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+
+            getEl('ametista').style.display = 'none';
+        }
+        findSecret(3); // Call findSecret for the "Pedra roxa" secret
+    });
+
+    getEl('morena-vhs-btn').addEventListener('click', function() {
+        if (tapes[1] && !tapes[1].find) {
+            tapes[1].find = true;
+            saveTapes();
+
+            const notification = getEl('photo-notification');
+            const notificationText = getEl('photo-notification-text');
+
+            notificationText.textContent = "Nova fita encontrada!";
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+
+            this.style.display = 'none';
+        }
+    });
+
+    getEl('cmd-vhs-trigger').addEventListener('click', function() {
+        if (tapes[2] && !tapes[2].find) {
+            tapes[2].find = true;
+            saveTapes();
+
+            const notification = getEl('photo-notification');
+            const notificationText = getEl('photo-notification-text');
+
+            notificationText.textContent = "Nova fita encontrada!";
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+
+            this.style.display = 'none';
+        }
+    });
+
+
+    getEl('vhsBtn').addEventListener('click', function() {
+        getEl('vhsChoiser').classList.add("active")
+        tapeLoad()
+    })
+
+    var tapeS = 0;
+
+    getEl("leftTape").addEventListener('click', function() {
+
+        if( tapeS == 0) {
+            tapeS = tapesHave.length-1
+        }
+        else {
+            tapeS--
+        }
+
+        tapeLoad()
+    })
+
+    getEl("rightTape").addEventListener('click', function() {
+
+        if( tapeS == tapesHave.length-1) {
+            tapeS = 0
+        }
+        else {
+            tapeS++
+        }
+        
+        tapeLoad()
+    })
+
+    var tapesHave = []
+
+    function tapeLoad() {
+        tapesHave = []
+        for (let i = 0; i < tapes.length; i++) {
+            const element = tapes[i];
+            if(element.find){
+                tapesHave.push(element)
+            }
+            
+        }
+        if (tapesHave.length == 0 ){
+            getEl('nullVhs').style.display = "block"
+            return;
+        }
+
+        getEl('nullVhs').style.display = "none"
+        getEl('vhsImg').src = tapesHave[tapeS].img;
+
+    }
+
+    const vhsPlayer = getEl('vhsPlayer');
+    const vhsImg = getEl('vhsImg');
+    const vhsChoiser = getEl('vhsChoiser');
+    const imgDisplay = document.querySelector('.imgDisplay');
+
+    vhsImg.addEventListener('click', () => {
+        if (tapesHave.length === 0) return;
+
+        const selectedTape = tapesHave[tapeS];
+
+        if (selectedTape.password) {
+            const password = prompt("Digite a senha para esta fita:");
+            if (password === selectedTape.password) {
+                vhsChoiser.classList.remove('active');
+                imgDisplay.style.display = 'none';
+                
+                vhsPlayer.src = selectedTape.content;
+                vhsPlayer.style.display = 'block';
+                vhsPlayer.play();
+            } else {
+                alert("Senha incorreta!");
+            }
+        } else {
+            vhsChoiser.classList.remove('active');
+            imgDisplay.style.display = 'none';
+            
+            vhsPlayer.src = selectedTape.content;
+            vhsPlayer.style.display = 'block';
+            vhsPlayer.play();
+        }
+    });
+
+    vhsPlayer.addEventListener('ended', () => {
+        vhsPlayer.style.display = 'none';
+        imgDisplay.style.display = 'flex';
+    });
+
+    document.getElementsByClassName('vhsBack')[0].addEventListener("click",function() {
+        vhsChoiser.classList.remove('active');
     })
     renderPhotos()
     updatePhotoNameWithFade()
 
-    setTimeout(() => {
-        addPhoto("Teste", "photos/photo(1).jpeg", "photos/photo(1).jpeg", 0);
-    }, 2000);
-});
+    addCard(0);
+    addCard(1);
+    addCard(2);
+    
+    if (cards[3] && cards[3].find) {
+        addCard(3);
+        document.getElementsByClassName("letterAdd")[0].style.display = "none";
+    }
 
+    const chat = [
+        "O que você acha disso?",
+        "- Disso o que?",
+        "Disso tudo.",
+        "- Seja mais expecifico",
+        "Dessa jornada.",
+        "- Odisseia?",
+        "Talvez Crônica",
+        "- Acho que...",
+        "- É só o começo.",
+        "Silêncio! Eles estão vindo!"
+    ]
+
+    var chatS = 0
+    var isTyping = false;
+
+    function typeWriter(element, text, callback) {
+        let i = 0;
+        element.innerHTML = '';
+        const speed = 50; // speed in milliseconds
+        isTyping = true;
+        getEl('chatBtn').disabled = true;
+
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                isTyping = false;
+                getEl('chatBtn').disabled = false;
+                if (callback) {
+                    callback();
+                }
+            }
+        }
+        type();
+    }
+
+    getEl("startB").addEventListener('click', function(){
+        getEl('remember').style.display = "flex"
+        getEl('remember').style.opacity = "1"
+        typeWriter(getEl('chatText'), chat[0]);
+    })
+    
+    getEl('chatBtn').addEventListener('click', function() {
+        if (isTyping) return;
+
+        if (chatS >= chat.length - 1) {
+            showStart()
+            return;
+        }
+        chatS++
+        typeWriter(getEl('chatText'), chat[chatS]);
+    })
+    
+    function showStart() {
+        const rememberEl = getEl('remember');
+        const chatEl = getEl('chat');
+        const rBody = getEl('Rbody');
+
+        if (chatEl) {
+            chatEl.style.transition = 'opacity 0.5s';
+            chatEl.style.opacity = '0';
+            setTimeout(() => {
+                chatEl.style.display = 'none';
+            }, 500);
+        }
+
+        if (rBody) {
+            rBody.style.display = 'block';
+            rBody.style.transform = 'scale(0.5)';
+            rBody.style.opacity = '0';
+            rBody.style.transition = 'transform 1s ease-in-out, opacity 1s ease-in-out';
+
+            setTimeout(() => {
+                rBody.style.transform = 'scale(1)';
+                rBody.style.opacity = '1';
+            }, 100);
+        }
+    }
+    /**
+     * 
+     * @param {string} id 
+     * @returns element
+     */
+
+    function getEl(id) {
+        return document.getElementById(id);
+    }
+
+});
