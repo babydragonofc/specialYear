@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if(data["blueTransitionOpened"]) {
                 getEl('morena-vhs-btn').style.display = 'block';
-                getEl('ametista').style.display = 'none';
+                getEl('ametista').style.display = 'block';
             }
         } else {
             data = {
@@ -1290,7 +1290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data.blueTransitionOpened) {
             dataSeting("blueTransitionOpened", true);
             getEl('morena-vhs-btn').style.display = 'block';
-            getEl('ametista').style.display = 'none';
+            getEl('ametista').style.display = 'block';
         }
       }, 400);
 
