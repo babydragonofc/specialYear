@@ -5,13 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link id="favicon" rel="icon" type="image/x-icon" href="">
 </head>
-
 <body>
+    
     <div id="start">
-        <h1 style="color: white;">Bem vindo(a)</h1>
-        <input type="text" name="" id="password">
-        <button id="En">Entrar</button>
+        <div id="s-1">
+            <div id="s1Text">
+                <span> > Bem Vindo(a)</span>
+                <span> > Digite a senha para entrar; Digite '?' para uma dica</span>
+            </div>
+            <div>
+                <span>></span>
+                <input type="text" id="password">
+            </div>
+            <!--
+                <h1 style="color: white;">Bem vindo(a)</h1>
+                <input type="text" name="" id="password">
+                <button id="En">Entrar</button>
+            -->
+        </div>
+        <div id="s-2">
+            <p id="start-p">"Em tudo, dêem graças, porque esta é a vontade de Deus."</p>
+            <p id="start-pc">-- 1 Tessalonicenses 5:18</p>
+        </div>
     </div>
     <div id="mainPage">
         <div id="miniPaperLight"></div>
@@ -55,7 +72,13 @@
                 <button id="gallery-btn" class="btn">Galeria</button>
                 <button id="messages-btn" class="btn">Mensagens</button>
                 <button id="extras-btn" class="btn">Extras</button>
+                <img id="axolotl-secret" src="image.png" style="position: absolute; bottom: 100px; right: 20px; width: 50px; cursor: pointer;">
+
                 
+            </div>
+            <div id="startD" style="display: none;">
+
+                <button id="startB"></button>
             </div>
             <div class="footer">
                 <p>ʌɐ</p>
@@ -86,6 +109,9 @@
                     <button class="p-btn p" id="erase-btn" style="display: none;">Apagar</button>
 
                     <button class="cp-btn" id="gal"></button>
+                    <button id="cmd-vhs-trigger" class="hidden-trigger"></button>
+                    <button class="letterAdd">
+                    </button>
                 </main>
             </div>
 
@@ -97,8 +123,8 @@
                     <p class="text" style="padding: 0 20px; text-align: center;">Aqui estarão as mensagens especiais para você, meu amor. Cada palavra escrita com todo meu coração.</p>
                     <div id="cards-container">
                     </div>
-                    <button class="cp-btn" id="msg"></button>
-                    
+                    <button class="cp-btn" id="mes"></button>
+                    <button id="morena-vhs-btn" class="vhs-button" style="display: none;"></button>
                 </main>
             </div>
 
@@ -124,13 +150,7 @@
                             </div>
                         </div>
                         <div id="musics">
-                            <div class="music">
-                                <img src="https://cdn-images.dzcdn.net/images/cover/33d70251f40848052b216707eff6830f/0x1900-000000-80-0-0.jpg" alt="">
-                                <div class="music-info">
-                                    <h3 class="music-title">Lorem</h3>
-                                    <p class="music-artist" class="text">Lorem, ipsum.</p>
-                                </div>
-                            </div>
+                           
                         </div>
                     </section>
 
@@ -154,12 +174,22 @@
                     <div id="shadow">
                         <p class="text" id="sdwTxt" >Existem segredos nas sombras</p>
                         <div class="shadow-content">
-
-                            <img src="" alt="" class="shadow-img">
-                            <img src="" alt="" class="shadow-img">
-                            <img src="" alt="" class="shadow-img">
-
-                            <button class="gamesBtn">Entrar</button>
+                            <div id="radio-div">
+                                <div class="rTop">
+                                    <p>Busque pelos 3</p>
+                                </div>
+                                <div class="rCon" style="background-image: url('radioBase.png');">
+                                    <div>
+                                        <button class="rRBtn" id="left-radio"><</button>
+                                        <p id="frequency">5</p>
+                                        <button class="rRBtn" id="right-radio">></button>
+                                    </div>
+                                </div>
+                                <button class="rBtn">
+                                    <p>Entrar</p>
+                                </button>
+                            </div>
+                            <button class="star dropedPhotos"></button>
                         </div>
                     </div>
 
@@ -183,6 +213,89 @@
         <div id="photo-notification">
             <img id="photo-notification-img" src="https://i.redd.it/w6a6775zvp661.gif" alt="">
             <p id="photo-notification-text"></p>
+        </div>
+    </div>
+
+    <div id="blueTransition">
+        <button class="backBtn"> < Voltar</button>
+        <div id="gamePhotos">
+            <div id="gamePhotosOverlay">
+                    <div class="vdDiv">
+                        <video src="https://v.ftcdn.net/03/10/20/32/700_F_310203283_xEHNczMUTkq8f6AtNbsZjzsUTp2oqOpe_ST.mp4" style="z-index: 3; mix-blend-mode: normal; display: none;" id="PSB" autoplay loop muted></video>
+                        <video src="https://videos.pexels.com/video-files/4514642/4514642-hd_1920_1080_25fps.mp4" autoplay loop muted></video>
+                        <video id="vhsPlayer" class="vhs-player"></video>
+                        <div class="imgDisplay">
+                            <img src="game/gamePhoto (1).png" id="gamePhoto">
+                        </div>
+                    </div>
+            </div>
+
+            <div style="display: flex;align-items: center;">
+               <button class="gB frutiger-aero-button" id="gameBtnLeft"><</button>
+               <button id="vhsBtn">
+                   <img src="vhsPlayer.png" alt="" width="300px">
+               </button>
+               <button class="gB frutiger-aero-button" id="gameBtnRight">></button>
+            </div>
+        </div>
+
+        <button class="ship"></button>
+        <button id="morena-vhs-btn" class="vhs-button" style="display: none;"></button>
+
+        <button id="ametista"></button>
+    </div>
+
+    <div id="futurePaperBox">
+        <div id="futurePaper">
+            <span id="futurePaperText"></span>
+        </div>
+    </div>
+
+    <div id="vhsChoiser">
+        <button class="vhsBack">Voltar > </button>
+        <div id="vhsChoiseBox">
+            <button class="frutiger-aero-button" id="leftTape"> < </button>
+            <div>
+                <span id="nullVhs">Você não tem Fitas...</span>
+                <img src="" alt="" id="vhsImg">
+            </div>
+            <button class="frutiger-aero-button" id="rightTape"> > </button>
+        </div>
+    </div>
+
+    <div id="remember">
+        <div id="chat">
+            <span id="chatText"></span>
+            <button id="chatBtn">Avançar ></button>
+        </div>
+
+        <div id="Rbody">
+            <div class="envelope">
+    </div>
+    
+    <div class="card">
+      <div class="back"></div>
+      <div class="front">
+        <div class="f-box">
+          <img src="https://assets.codepen.io/4927073/ValCard.png" alt="">
+        </div>
+      </div>
+    
+      <div class="text-containerA">
+    
+        <p>
+          Feliz <span>12 mês</span> de namoro! <br>
+          Você é a melhor coisa que aconteceu comigo! <br>
+          Te amo, meu amor! <br>
+            <br>
+          31 . 10 . 2025
+          <br>
+
+          <p>Pra sempre .... </p>
+
+        </p>
+      </div>
+    </div>
         </div>
     </div>
     <script src="script.js"></script>
