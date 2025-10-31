@@ -17,9 +17,12 @@ body {
     background-image: url(c542315a34cb00510499d93d7ff473cd\ \(2\).jpg);
     background-size: cover;
     background-position: center;
-    transition: 2s ;
     background-position-y: 0;
+    transition: transform 0.6s ease, background-position-y 2s;
+    transform-origin: center center;
+    overflow: hidden;
 }
+
 
 #start {
     position: absolute;
@@ -27,13 +30,64 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: #130329;
+    background-color: #000000;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     z-index: 5000;
-    transition: 1s opacity;
+    transition: 2s opacity;
+}
+
+#s-1 {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    
+    color: white;
+}
+
+#s-1 #s1Text {
+    display: flex;
+    flex-direction: column;
+}
+
+#s-1 input {
+    background-color: transparent;
+    height: 20px;
+    width: 250px;
+    border: none;
+}
+
+#s-1 input:focus {
+    outline: none;
+}
+
+#s-1 input:valid {
+    background-color: transparent;
+    color: white;
+}
+
+#s-2 {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 6s;
+}
+
+#s-2 #start-pc {
+    opacity: 0;
+    transition: 1s;
 }
 
 .welcome-screen {
@@ -414,7 +468,7 @@ body {
 
 .particle {
     position: absolute;
-    background-color: #000000; /* Cor branca para as estrelas */
+    background-color: #ffffff; /* Cor branca para as estrelas */
     /* Garante que as partículas não interfiram com cliques na foto */
     pointer-events: none; 
     /* Aplica a animação, 'forwards' mantém o estado final (invisível) */
@@ -425,6 +479,7 @@ body {
     mask-size: contain;
     /* A borda agora é criada por um pseudo-elemento ::before posicionado atrás */
     transform: scale(2.0);
+    z-index: 5000;
 }
 
 .particle::before {
@@ -439,6 +494,7 @@ body {
     -webkit-mask-image: url(star.svg);
     mask-size: contain;
     transform: scale(0.9); /* Aumenta o fundo para criar a borda (25% maior) */
+    z-index: 5000;
     
 }
 
@@ -462,7 +518,7 @@ body {
     top: 0;
     left: 0;
     background-color: transparent; /* Começa transparente */
-    z-index: 50;
+    z-index: 9999999999999999999999999999;
     display: flex; /* Usa flexbox para centralizar a caixa */
     flex-direction: column;
     align-items: center;
@@ -891,8 +947,14 @@ body {
     box-shadow: inset 0 5px 15px 9px #ffffff91;
     border-radius: 31px;
     gap: 10px;
+    overflow: auto;
     
 }
+
+#musics::-webkit-scrollbar {
+  display: none;
+}
+
 
 .music {
     display: flex;
@@ -957,6 +1019,12 @@ body {
     position: relative;
     text-align: end;
 }
+
+.music .music-info .music-title:not(.scrolling) {
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 .music .music-info .music-title span {
     white-space: nowrap;
@@ -1095,7 +1163,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 4000;
-    transition: 5s;
+    transition: 5s opacity;
 }
 
 #energyOverlay.active {
@@ -1237,6 +1305,9 @@ body {
 
 .shadow-content {
     display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
 }
 
 .theater {
@@ -1247,44 +1318,23 @@ body {
 
 #photo-notification {
     position: fixed;
-    top: -100px; /* Começa fora da tela */
+    top: 20px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -200%);
     display: flex;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 10px 20px;
     border-radius: 20px;
-    z-index: 100;
-    transition: top 0.5s ease-in-out;
-}
-
-#photo-notification::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-image: url('https://i.redd.it/w6a6775zvp661.gif');
-    background-size: cover;
-    background-position: -40px;
-    opacity: 0.5;
-}
-
-#photo-notification::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    backdrop-filter: blur(4px);
+    z-index: 999999999999999999;
+    transition: transform 0.5s ease-in-out;
+    width: 90%;
+    max-width: 350px;
 }
 
 #photo-notification.show {
-    top: 20px; /* Posição final na tela */
+    transform: translate(-50%, 0);
 }
 
 #photo-notification-img {
@@ -1298,4 +1348,704 @@ body {
 #photo-notification-text {
     font-size: 1rem;
     z-index: 200;
+}
+
+.dropedPhotos {
+    width: 100px;
+    height: 100px;
+    background-image: url('photos.png');
+    background-size: cover;  
+    background-color: transparent;
+    border: none; 
+    cursor: pointer;
+}
+
+#radio-div {
+    height: 200px;
+    width: 300px;
+}
+
+#radio-div .rTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #221910;
+    color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+#radio-div .rCon {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: relative; /* Needed for pseudo-element positioning */
+    color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#radio-div .rCon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(radioBase.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1; /* Place it behind the content */
+}
+
+.rCon.active {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+#radio-div .rCon.active::before {
+    animation: shake 1.5s ease-in-out infinite;
+}
+
+#radio-div .rCon div{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+#radio-div .rCon div p {
+    margin: 6px;
+}
+
+#radio-div .rBtn {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.rRBtn {
+    border: none;
+    background-color: #130329;
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+.rBtn {
+    background-image: url(por.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    box-shadow: #00000069 0 7px 16px inset;
+    cursor: pointer;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+}
+
+.rBtn p {
+    opacity: 0;
+    color: white;
+    transition: 1s;
+    margin-top: 70px;
+}
+
+.rBtn:hover p{
+    opacity: 1;
+}
+
+/* Zoom temporário */
+body.zooming {
+  transform: scale(5);
+}
+
+/* Tela azul inicial — invisível */
+#blueTransition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0a2440; /* azul */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Quando ativada */
+#blueTransition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+/* Container geral (pode ser body ou mainPage) */
+.vhs-effect {
+  position: relative;
+  overflow: hidden;
+  filter: contrast(1.1) brightness(1.05) saturate(1.2);
+}
+
+/* Linhas horizontais leves */
+.vhs-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05) 0px,
+    rgba(255,255,255,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+  animation: scanlines 3s linear infinite;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Ruído leve (granulado) */
+.vhs-effect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/d/d1/Noise_texture.png");
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  animation: noiseMove 0.3s infinite;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+/* Animações */
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes noiseMove {
+  0%, 100% { transform: translate(0,0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -1%); }
+  75% { transform: translate(-1%, 2%); }
+}
+
+/* Leve distorção de cor (RGB split) */
+.vhs-rgb {
+  filter: contrast(1.2) brightness(1.1) saturate(1.3);
+}
+
+.vhs-rgb img,
+.vhs-rgb .text,
+.vhs-rgb h1,
+.vhs-rgb h2 {
+  position: relative;
+  color: white;
+  text-shadow:
+    -1px 0 red,
+    1px 0 cyan;
+}
+
+.frutiger-aero-button {
+  /* Basic Button Styling */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 8px; /* Rounded corners for a softer look */
+  font-family: 'Segoe UI', Arial, sans-serif; /* Common Frutiger Aero font */
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* White text for contrast */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); /* Subtle text shadow */
+  cursor: pointer;
+  outline: none;
+  border: 1px solid rgba(255, 0, 0, 0.7); /* Red border with slight transparency */
+
+  /* Frutiger Aero Red Gradient */
+  background: linear-gradient(to bottom, #ff4c4c 0%, #cc0000 100%); /* Red gradient */
+
+  /* Glossy Effect */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6), /* Top highlight for gloss */
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2), /* Bottom shadow for depth */
+    0 4px 8px rgba(0, 0, 0, 0.3); /* Outer shadow for a lifted look */
+
+  /* Hover Effect */
+  transition: all 0.2s ease-in-out; /* Smooth transitions */
+}
+
+.frutiger-aero-button:hover {
+  background: linear-gradient(to bottom, #ff6666 0%, #dd0000 100%); /* Lighter red on hover */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.8), 
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 6px 12px rgba(0, 0, 0, 0.4); /* More pronounced shadow on hover */
+  transform: translateY(-1px); /* Slight lift on hover */
+}
+
+.frutiger-aero-button:active {
+  background: linear-gradient(to bottom, #cc0000 0%, #ff4c4c 100%); /* Inverted gradient on click */
+  box-shadow: 
+    inset 0 1px 0 rgba(0, 0, 0, 0.2), 
+    inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow for pressed effect */
+  transform: translateY(1px); /* Slight press down effect */
+}
+
+#gamePhotos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gamePhotosOverlay {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+#gamePhotosOverlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('tv.png');
+    background-size: contain;
+}
+
+#gamePhotosOverlay .vdDiv{
+    height: 172px;
+    position: absolute;
+    bottom: 80px;
+    width: 210px;
+    overflow: auto;
+    right: 47px;
+    background-color: #000000;
+}
+
+#gamePhotosOverlay .vdDiv video {
+    height: 100%;
+    position: absolute;
+    opacity: 1;
+    mix-blend-mode: plus-lighter;
+    z-index: 0;
+}
+
+#gamePhotosOverlay .vdDiv .imgDisplay {
+    display: flex;
+    justify-content: center;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.backBtn {
+    background-color: #000000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid white;
+    border-top: none;
+    border-left: none;
+    color: white;
+    border-radius: 0 0 40px 0;
+    height: 50px;
+    width: 150px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    opacity: 0.4;
+    transition: 0.3s ease-in-out;
+    cursor: pointer
+}
+
+.backBtn:hover {
+    opacity: 1;
+    scale: 1.1;
+}
+
+.backBtn.zoom-out {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.vhsBack {
+    background-color: #000000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid white;
+    border-top: none;
+    border-right: none;
+    color: white;
+    border-radius: 0 0 0 40px;
+    height: 50px;
+    width: 150px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    opacity: 0.4;
+    transition: 0.3s ease-in-out;
+    cursor: pointer
+}
+
+.vhsBack:hover {
+    opacity: 1;
+    scale: 1.1;
+}
+
+#futurePaperBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #5555559a;
+    transition: 0.3s;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 100;
+}
+
+#futurePaperBox.active {
+    display: flex;
+    opacity: 1;
+}
+
+#futurePaperBox #futurePaper {
+    width: 310px;
+    height: 300px;
+    padding: 20px;
+    transform: scale(0.7) rotate(-65deg);
+    transition: 0.5s;
+}
+
+#futurePaperBox.active #futurePaper {
+    transform: scale(1) rotate(5deg);
+    overflow: auto;
+}
+
+#futurePaperBox #futurePaper #futurePaperText {
+
+}
+
+.MINEPOEM {
+    font-size: 14px;
+}
+
+.ship {
+        position: absolute;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+    background-image: url(https://blob.gifcities.org/gifcities/DV7SDKFEGBS5QIYLCKAVHVDG2V4M7C6J.gif);
+    height: 71px;
+    width: 71px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.letterAdd {
+    background-color: transparent;
+    border: none;
+    background-image: url(https://blob.gifcities.org/gifcities/RJ45QUQYLO7PPOLQKMOCLEYDPVBCWLJE.gif);
+    height: 71px;
+    width: 71px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#vhsBtn {
+    background-color: transparent;
+    border: none;
+}
+
+#vhsChoiser {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #26262630;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    z-index: 10001;
+    top: 0;
+    transition: 0.3s;
+}
+
+#vhsChoiser.active {
+    display: flex;
+    opacity: 1;
+}
+
+#vhsChoiseBox {
+    display: flex;
+    width: 100%;
+    height: 50dvh;
+    justify-content: center;
+    align-items: center;
+    background: #00000096;
+    color: white;
+}
+
+#vhsChoiseBox div {
+    background-color: #000000;
+    height: 25dvh;
+    width: 25dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#vhsChoiseBox div img {
+    height: 100px;
+}
+
+#ametista {
+    background-image: url(https://stardewvalleywiki.com/mediawiki/images/2/2e/Amethyst.png);
+    background-color: transparent;
+    border: none;
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 10px;
+
+}
+
+.vhs-player {
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    object-fit: cover;
+}
+
+#morena-vhs-btn {
+    background-image: url('tapes/vhsBase.png'); /* placeholder */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    width: 80px;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    min-height: 50px;
+}
+
+.hidden-trigger {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #07ff00; /* Same as the background of the main section */
+    cursor: pointer;
+    border: none;
+    z-index: 100; /* To be on top of other elements */
+}
+
+#startD {
+    position: absolute;
+    height: 150px;
+    width: 50dvw;
+    bottom: 0;
+    border-radius: 50px 50px 0 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 25%;
+}
+
+#startB {
+    position: relative;
+    background-image: url(https://64.media.tumblr.com/54662948953a7523aaa1ef3cf2240546/tumblr_p8zl6iQccs1tdtlxno1_500.gif);
+    background-size: contain;
+    height: 100px;
+    width: 100px;
+    border: none;
+}
+
+#startB::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(starT.svg);
+    background-size: contain;
+}
+
+#remember {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    background-color: black;
+    color: white;
+    opacity: 0;
+    transition: 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000000000000000000;
+}
+
+#remember button {
+    background-color: white;
+    color: black;
+    border: none
+}
+
+#Rbody {
+    z-index: 9999999;
+  display: none;
+  margin: auto;
+  background-image: url(https://assets.codepen.io/4927073/Group2.png), url(https://assets.codepen.io/4927073/Background6.png);
+  background-image: url(https://assets.codepen.io/4927073/Group2.png), linear-gradient(33deg, #edf2f7, #edf2f7);
+  background-image: url(https://assets.codepen.io/4927073/Group2.png),  linear-gradient(33deg, #2c303a, #2c303a);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.envelope {
+  content: url(https://assets.codepen.io/4927073/Envelope3.png);
+  width: 430px;
+  position: absolute;
+  left: 18%;
+  top: 3%;
+  filter: drop-shadow(1.5px 0.75px 1.75px #4d4d4d);
+}
+
+.card {
+  position: relative;
+  width: 262px;
+  height: 372px;
+  margin: auto;
+  box-shadow: inset 5px 0px 15px 0px rgba(0, 0, 0, 0.1),
+    3px 0px 3px -2px rgba(0, 0, 0, 0.3);
+  background-color: #fffffa;
+      transform: scale(1.05);
+  left: 12px;
+}
+
+.front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -10px 0px 0px -10px;
+  margin: auto;
+  border: 1px solid #e0e0db;
+  backface-visibility: hidden;
+  background-color: #e8e6e3;
+  background-size: contain;
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+  transform: perspective(800px) rotateY(0deg);
+  transition: all 1s ease-in-out;
+  filter: saturate(1.125) brightness(1.0125);
+}
+
+.card:hover .front {
+  transform: perspective(800px) rotateY(-170deg);
+  background-color: rgb(205, 205, 205);
+}
+
+.card:hover .back {
+  transform: perspective(800px) rotateY(-170deg);
+  box-shadow: 7px 0px 2px 0px rgba(0, 0, 0, 0.3),
+    inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fffffa;
+}
+
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: -10px 0px 0px -10px;
+  margin: auto;
+  backface-visibility: visible;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.25));
+  box-shadow: inset 5px 0px 15px 0px rgba(0, 0, 0, 0.1),
+    3px 0px 3px 1px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+  transform: perspective(800px) rotateY(0deg);
+  transition: all 1s ease-in-out;
+  background-color: #fff;
+}
+
+.text-containerA {
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto;
+  color: #929292;
+}
+
+.f-box {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: transparent;
+  box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.f-box img {
+  margin-top: 0px;
+  height: 100%;
+  width: auto;
+}
+
+
+
+
+@media (max-width: 675px) {
+  .envelope {
+    width: 380px;
+}
+  
+  .card {
+    height: 330px;
+    width: 230px;
+}
 }
